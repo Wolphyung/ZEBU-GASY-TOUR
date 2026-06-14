@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Zébu Resto à Ambalavao - Une expérience gastronomique exclusive à Ambalakajaha. Cuisine malgache d'auteur par ZEBU GASY TOUR.">
+  <meta name="keywords" content="Zebu Resto, Ambalavao, Restaurant, Restaurant Madagascar, Table d'hôte, Zebu Gasy Tour, gastronomie malgache">
+  <meta name="author" content="ZEBU GASY TOUR">
+  <title>Zébu Resto | Restaurant Gastronomique | Ambalavao</title>
+  
+  <!-- Bootstrap 5 CSS + Fonts + Font Awesome + AOS + Swiper -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Palette Premium Raffinée - Authentic Luxury */
+    :root {
+      --cream: #FDFBF7;
+      --charcoal: #1E2A2F;
+      --gold-muted: #C6A43B;
+      --gold-bright: #DAB75D;
+      --gold-dark: #A17F2A;
+      --olive: #4A5B4B;
+      --terracotta: #B95C3B;
+      --sand: #E8DDD0;
+      --shadow-sm: 0 20px 35px -15px rgba(0,0,0,0.08);
+      --shadow-hover: 0 30px 45px -20px rgba(0,0,0,0.15);
+      --transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    [data-theme="dark"] {
+      --cream: #12181C;
+      --charcoal: #E9ECEF;
+      --sand: #1F2A2F;
+      --shadow-sm: 0 20px 35px -15px rgba(0,0,0,0.3);
+      background: #0F1419;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--cream);
+      color: var(--charcoal);
+      transition: background-color 0.4s ease, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .serif {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    /* Premium Navbar */
+    .navbar-glass-premium {
+      background: rgba(253, 251, 247, 0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(198, 164, 59, 0.25);
+      padding: 0.75rem 0;
+      transition: 0.3s;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.02);
+    }
+    [data-theme="dark"] .navbar-glass-premium {
+      background: rgba(18, 24, 28, 0.96);
+      border-bottom: 1px solid rgba(198, 164, 59, 0.3);
+    }
+
+    .brand-logo-premium {
+      height: 55px;
+      width: auto;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.06));
+      transition: transform 0.3s ease;
+    }
+    .brand-logo-premium:hover {
+      transform: scale(1.02);
+    }
+
+    /* Boutons Premium */
+    .btn-outline-gold {
+      border: 1.5px solid var(--gold-muted);
+      background: transparent;
+      color: var(--charcoal);
+      padding: 8px 28px;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      transition: var(--transition);
+    }
+    .btn-outline-gold:hover {
+      background: var(--gold-muted);
+      color: #1E2A2F;
+      border-color: var(--gold-muted);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(198,164,59,0.2);
+    }
+    .btn-solid-gold {
+      background: linear-gradient(135deg, var(--gold-muted) 0%, var(--gold-bright) 100%);
+      border: none;
+      color: #1E2A2F;
+      font-weight: 600;
+      padding: 12px 38px;
+      border-radius: 50px;
+      transition: var(--transition);
+      box-shadow: 0 6px 18px rgba(198, 164, 59, 0.25);
+    }
+    .btn-solid-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(198, 164, 59, 0.4);
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-muted) 100%);
+      color: #0A0E10;
+    }
+
+    /* Hero Cinématique amélioré */
+    .hero-premium {
+      height: 90vh;
+      min-height: 680px;
+      background: linear-gradient(115deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.65) 100%), url('images/hero-resto.jpg');
+      background-size: cover;
+      background-position: center 25%;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .hero-premium::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(to top, var(--cream), transparent);
+      pointer-events: none;
+    }
+    .hero-title {
+      font-size: 5.8rem;
+      font-weight: 700;
+      text-shadow: 0 2px 25px rgba(0,0,0,0.3);
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #FFFFFF 30%, #F5E6B8 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .gold-divider {
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold-muted), var(--gold-bright), transparent);
+      margin: 1.8rem auto;
+      border-radius: 4px;
+    }
+    .badge-luxury {
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      padding: 0.6rem 1.5rem;
+      border-radius: 60px;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      font-weight: 500;
+      border: 1px solid rgba(218,183,93,0.5);
+    }
+
+    /* Section avec pattern subtil */
+    .pattern-divider {
+      background-image: radial-gradient(var(--gold-muted) 0.8px, transparent 0.8px);
+      background-size: 24px 24px;
+      opacity: 0.08;
+      height: 4px;
+      width: 100%;
+    }
+
+    /* Menu Card Ultra Premium */
+    .menu-card-premium {
+      background: var(--cream);
+      border-radius: 32px;
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid rgba(198, 164, 59, 0.15);
+      box-shadow: var(--shadow-sm);
+    }
+    .menu-card-premium:hover {
+      transform: translateY(-12px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(198, 164, 59, 0.3);
+    }
+    .menu-img-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+    .menu-img {
+      height: 270px;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      width: 100%;
+    }
+    .menu-card-premium:hover .menu-img {
+      transform: scale(1.08);
+    }
+    .price-tag {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      background: linear-gradient(135deg, rgba(198,164,59,0.12), rgba(198,164,59,0.05));
+      padding: 0.4rem 1.3rem;
+      border-radius: 40px;
+      display: inline-block;
+      color: var(--gold-muted);
+      font-size: 1.1rem;
+      backdrop-filter: blur(4px);
+    }
+    .menu-category {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold-muted);
+    }
+
+    /* Swiper Gallery amélioré */
+    .gallery-swiper .swiper-slide {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -10px rgba(0,0,0,0.1);
+    }
+    .gallery-swiper img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+    .gallery-swiper .swiper-slide:hover img {
+      transform: scale(1.03);
+    }
+    .gallery-swiper .swiper-pagination-bullet-active {
+      background: var(--gold-muted);
+    }
+    .gallery-swiper .swiper-button-prev,
+    .gallery-swiper .swiper-button-next {
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      color: var(--gold-muted);
+    }
+    .gallery-swiper .swiper-button-prev:after,
+    .gallery-swiper .swiper-button-next:after {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    /* CTA Premium */
+    .cta-premium {
+      background: linear-gradient(135deg, #2C3A30 0%, #1E2A23 100%);
+      border-radius: 48px;
+      padding: 3.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-premium::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(198,164,59,0.1), transparent);
+      border-radius: 50%;
+    }
+    .whatsapp-premium {
+      background: #25D366;
+      border-radius: 60px;
+      padding: 1rem 2.5rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      border: none;
+      color: #121212;
+      box-shadow: 0 8px 20px rgba(37,211,102,0.25);
+    }
+    .whatsapp-premium:hover {
+      background: #128C7E;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(37,211,102,0.35);
+      color: white;
+    }
+
+    /* Footer amélioré */
+    .footer-premium {
+      background: #0E1418;
+      color: #A0A9B0;
+      border-top: 1px solid rgba(198,164,59,0.2);
+    }
+    .footer-link {
+      color: #B0B7BE;
+      text-decoration: none;
+      transition: color 0.2s;
+      font-size: 0.85rem;
+    }
+    .footer-link:hover {
+      color: var(--gold-muted);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 3.2rem; }
+      .hero-premium { height: 75vh; background-attachment: scroll; min-height: 550px; }
+      .menu-img { height: 220px; }
+      .cta-premium { padding: 2rem 1.5rem; }
+      .gallery-swiper img { height: 260px; }
+    }
+
+    /* Animation fade-in */
+    @keyframes subtleFade {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .fade-subtle {
+      animation: subtleFade 0.8s ease forwards;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Professionnelle -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-glass-premium">
+  <div class="container">
+    <a class="navbar-brand p-0" href="index.html">
+      <img src="Image/ChatGPT_Image_Jun_14__2026__12_01_51_PM-removebg-preview.png" alt="ZEBU GASY TOUR" class="brand-logo-premium">
+      <span class="logo-text ms-2">Zébu Resto</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPremium">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarPremium">
+      <ul class="navbar-nav mx-auto align-items-center gap-2 gap-lg-4">
+        <li class="nav-item">
+          <a class="btn-outline-gold text-decoration-none" href="index.html">
+            <i class="fas fa-compass me-2"></i><span class="lang-fr">Voyages & Safaris</span><span class="lang-en">Tours & Safaris</span>
+          </a>
+        </li>
+        <li class="nav-item d-none d-lg-block">
+          <span class="fw-light text-muted small" style="letter-spacing: 1px;">✦</span>
+        </li>
+        <li class="nav-item">
+          <span class="fw-semibold" style="color: var(--gold-muted); letter-spacing: 0.5px;">
+            <i class="fas fa-utensils me-1"></i> Table Signature
+          </span>
+        </li>
+      </ul>
+      <div class="d-flex gap-3 align-items-center">
+        <button class="btn p-0 d-flex align-items-center justify-content-center" id="themeTogglePremium" style="color: var(--charcoal); width: 40px; height: 40px; border-radius: 50%; background: rgba(0,0,0,0.05); transition: 0.2s;">
+          <i class="fas fa-moon" id="themeIconPremium"></i>
+        </button>
+        <button class="btn p-0 d-flex align-items-center justify-content-center" id="langTogglePremium" style="color: var(--charcoal); font-weight: 600; width: 44px; background: rgba(0,0,0,0.05); border-radius: 40px; height: 40px;">
+          <span id="langLabelPremium">FR</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero Cinématique -->
+  <section class="hero-premium">
+    <div class="container text-center text-white" data-aos="fade-up" data-aos-duration="1100">
+      <div class="badge-luxury d-inline-flex mb-4">
+        <i class="fas fa-star-of-life me-2"></i> GASTRONOMIE D'EXCEPTION
+      </div>
+      <h1 class="hero-title display-1 fw-bold">Zébu Resto</h1>
+      <div class="gold-divider"></div>
+      <p class="lead fs-3 fw-light"><span class="lang-fr">Ambalavao · Cuisine d'auteur</span></p>
+      <p class="lead fs-3 fw-light"><span  class="lang-en">Ambalavao . Author's cuisine</span></p>
+      <div class="mt-5 d-flex justify-content-center gap-4 flex-wrap">
+        <a href="#menu" class="btn-solid-gold text-decoration-none"><span class="lang-fr">Explorer la carte</span><span class="lang-en">Explore the menu</span></a>
+        <a href="#reservation" class="btn-outline-gold text-decoration-none" style="background: rgba(255,255,245,0.12); border-color: rgba(255,215,0,0.6); color: white;"><span class="lang-fr">Réserver une table</span><span class="lang-en">Book a table</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Présentation signature -->
+  <section class="py-6 py-5">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <span class="badge-luxury d-inline-flex" style="background: rgba(198,164,59,0.12); color: var(--gold-muted);"><i class="fas fa-leaf me-2"></i> Terroir & Authenticité</span>
+          <h2 class="display-5 fw-semibold mt-3 serif"><span class="lang-fr">L'âme culinaire des Hautes Terres</span><span class="lang-en">Highlands' Culinary Soul</span></h2>
+          <div class="gold-divider" style="margin-left: 0; margin-right: 0; width: 70px;"></div>
+          <p class="lead mt-4" style="color: var(--charcoal); opacity: 0.85; line-height: 1.6;">
+            <span class="lang-fr">Niché sur la mythique Ambalakajaha, Zébu Resto est bien plus qu'une halte : une expérience gastronomique immersive imaginée par Zébu Resto. Ici, le zébu d'élevage libre est sublimé par des techniques artisanales, et chaque assiette raconte un voyage entre épices, brèdes et saveurs volcaniques d'Ambalavao.</span>
+            <span class="lang-en">Nestled on the legendary Ambalakajaha, Zébu Resto is more than a stopover: a gourmet experience crafted by Zébu Resto. Free-range zebu is elevated by artisanal techniques, each plate tells a journey of spices, greens, and volcanic flavors.</span>
+          </p>
+          <div class="row mt-4 g-3">
+            <div class="col-6">
+              <div class="d-flex gap-3 align-items-center"><i class="fas fa-check-circle fa-lg" style="color: var(--gold-muted);"></i> <span class="fw-medium"><span class="lang-fr">Zébu labellisé</span><span class="lang-en">Premium Zebu</span></span></div>
+              <div class="d-flex gap-3 align-items-center mt-3"><i class="fas fa-check-circle fa-lg" style="color: var(--gold-muted);"></i> <span class="fw-medium"><span class="lang-fr">Circuits courts bio</span><span class="lang-en">Short supply chain</span></span></div>
+            </div>
+            <div class="col-6">
+              <div class="d-flex gap-3 align-items-center"><i class="fas fa-wine-glass-alt fa-lg" style="color: var(--gold-muted);"></i> <span class="fw-medium"><span class="lang-fr">Rhumerie privée</span><span class="lang-en">Private Rum cellar</span></span></div>
+              <div class="d-flex gap-3 align-items-center mt-3"><i class="fas fa-fire fa-lg" style="color: var(--gold-muted);"></i> <span class="fw-medium"><span class="lang-fr">Grillade au feu de bois</span><span class="lang-en">Wood-fire grill</span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="position-relative">
+            <img src="Image/steak.png" alt="Zebu premium" class="img-fluid rounded-4 shadow-lg" style="object-fit: cover; height: 480px; width: 100%; filter: brightness(0.98);">
+            <div class="position-absolute bottom-0 start-0 bg-white p-3 rounded-4 shadow-lg m-3" style="background: var(--cream) !important; border-left: 4px solid var(--gold-muted);">
+              <i class="fas fa-quote-left text-gold me-1" style="color: var(--gold-muted);"></i> <strong class="serif fs-5">“Une viande exceptionnelle, une authenticité rare”</strong> 
+              <div class="small mt-1">— Guide Gastronomique 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pattern-divider"></div>
+
+  <!-- MENU signature - Plats authentiques malgaches -->
+  <section id="menu" class="py-5" style="background: var(--sand); transition: background 0.3s;">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="badge-luxury d-inline-flex mb-2" style="background: rgba(198,164,59,0.18);"><i class="fas fa-receipt"></i> <span class="lang-fr">Carte d'Automne 2026</span><span class="lang-en">Autumn 2026 Menu</span></span>
+        <h2 class="display-5 fw-semibold serif"><span class="lang-fr">Nos Signatures</span><span class="lang-en">Our Signatures</span></h2>
+        <div class="gold-divider"></div>
+      </div>
+      <div class="row g-5">
+        <!-- Plat 1 : Steak de Zébu -->
+        <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+          <div class="menu-card-premium h-100">
+            <div class="menu-img-wrapper">
+              <img src="Image/PIIZA.png" class="menu-img" alt="PIZZA">
+            </div>
+            <div class="p-4">
+              <h3 class="h4 fw-bold serif">🍕 PIZZA</h3>
+              <p class="small opacity-75 my-2">
+                <span class="lang-fr"> Chez Zébu Resto, chaque pizza est préparée avec passion à partir d’ingrédients frais, soigneusement sélectionnés pour leur qualité et leur saveur. Notre pâte, délicatement travaillée, associée à des garnitures généreuses et savoureuses, offre un équilibre parfait entre authenticité et gourmandise.
+
+Que ce soit pour un repas en famille, un moment entre amis ou simplement pour satisfaire une envie de bonne cuisine, nos pizzas sont conçues pour vous faire vivre une expérience culinaire unique. Chaque bouchée révèle le savoir-faire de notre équipe et l’attention portée aux moindres détails afin de garantir fraîcheur, qualité et satisfaction.
+
+Découvrez des saveurs authentiques qui feront de chaque dégustation un moment de plaisir inoubliable.</span>
+                <span class="lang-en">At Zébu Resto, each pizza is prepared with passion using fresh ingredients, carefully selected for their quality and flavor. Our delicately crafted dough, combined with generous and flavorful toppings, offers a perfect balance between authenticity and indulgence. Whether for a family meal, a get-together with friends, or simply to satisfy a craving for good food, our pizzas are designed to provide you with a unique culinary experience. Every bite reveals the expertise of our team and the attention to detail that ensures freshness, quality, and satisfaction. Discover authentic flavors that will make every bite an unforgettable moment of pleasure.</span>
+              </p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="price-tag">25 000 Ar</span>
+                <i class="fas fa-utensils text-gold" style="color: var(--gold-muted);"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Plat 2 : Romazava Royal -->
+        <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+          <div class="menu-card-premium h-100">
+            <div class="menu-img-wrapper">
+              <img src="Image/TACOS.png" class="menu-img" alt="TACOS">
+            </div>
+            <div class="p-4">
+              <h3 class="h4 fw-bold serif">🌯 TACOS</h3>
+              <p class="small opacity-75 my-2">
+                <span class="lang-fr"> Véritable symbole de gourmandise, nos tacos sont préparés à la commande pour vous garantir fraîcheur, qualité et saveurs incomparables. Chaque recette est soigneusement élaborée avec des ingrédients sélectionnés, des viandes tendres, des légumes frais et des sauces savoureuses qui se marient parfaitement pour créer une expérience unique.
+
+Chez Zébu Resto, nous mettons un point d'honneur à offrir des tacos généreux, équilibrés et riches en goût, capables de satisfaire toutes les envies. Que vous soyez amateur de saveurs classiques ou à la recherche d'un repas copieux et réconfortant, nos tacos sont conçus pour transformer chaque dégustation en un véritable moment de plaisir.
+
+Découvrez une cuisine généreuse où qualité, authenticité et passion se retrouvent dans chaque tacos.</span>
+                <span class="lang-en">A true symbol of deliciousness, our tacos are made fresh to order to guarantee unparalleled freshness, quality, and flavor. Each recipe is carefully crafted with select ingredients, tender meats, fresh vegetables, and flavorful sauces that blend perfectly to create a unique experience.
+At Zébu Resto, we pride ourselves on offering generous, balanced, and flavorful tacos that satisfy every craving. Whether you prefer classic flavors or are looking for a hearty and comforting meal, our tacos are designed to transform every bite into a truly enjoyable experience.
+Discover a generous cuisine where quality, authenticity, and passion come together in every taco.</span>
+              </p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="price-tag">19 000 Ar</span>
+                <i class="fas fa-bowl-food" style="color: var(--terracotta);"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Plat 3 : Soufflé Vanille / dessert Signature -->
+        <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+          <div class="menu-card-premium h-100">
+            <div class="menu-img-wrapper">
+              <img src="Image/choc choc.jpeg"menu-img" alt="CHOC CHOC">
+            </div>
+            <div class="p-4">
+              <h3 class="h4 fw-bold serif">🥃 CHOC CHOC</h3>
+              <p class="small opacity-75 my-2">
+                <span class="lang-fr"> Choc Choc est une boisson alcoolisée artisanale fièrement produite par Zébu Resto, mettant en valeur le savoir-faire malgache et la richesse de notre terroir. Élaborée avec soin à partir d’ingrédients sélectionnés, elle se distingue par son caractère authentique, sa qualité remarquable et son goût unique.
+Fruit d’un travail passionné et d’une attention particulière portée à chaque étape de sa fabrication, Choc Choc incarne l’engagement de Zébu Resto à proposer des produits locaux d’excellence. Son équilibre subtil de saveurs et son identité singulière en font une boisson idéale pour accompagner les moments de convivialité, les célébrations et les instants de partage.
+Plus qu’une simple boisson, Choc Choc représente l’expression d’un patrimoine, d’une culture et d’un savoir-faire entièrement malgaches. À travers chaque dégustation, découvrez une expérience authentique qui reflète les valeurs de qualité, de passion et d’innovation portées par Zébu Resto.
+Choc Choc — Une création malgache, une signature Zébu Resto.</span>
+                <span class="lang-en">Choc Choc is a handcrafted alcoholic beverage proudly produced by Zébu Resto, showcasing Malagasy expertise and the richness of our land. Carefully crafted from select ingredients, it stands out for its authentic character, remarkable quality, and unique taste.
+The result of passionate work and meticulous attention to detail at every stage of its production, Choc Choc embodies Zébu Resto's commitment to offering exceptional local products. Its subtle balance of flavors and distinctive identity make it the perfect drink to accompany convivial gatherings, celebrations, and moments of sharing.
+More than just a beverage, Choc Choc represents the expression of a heritage, culture, and expertise that are entirely Malagasy. With each sip, discover an authentic experience that reflects the values ​​of quality, passion, and innovation championed by Zébu Resto.
+Choc Choc — A Malagasy creation, a Zébu Resto signature.</span>
+              </p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="price-tag">20 000 Ar</span>
+                <i class="fas fa-star" style="color: var(--gold-bright);"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <p class="fst-italic text-muted"><span class="lang-fr">* Menu Dégustation « Saveurs du Sud » : 4 plats + cocktail signature à 65 000 Ar</span><span class="lang-en">* Tasting menu "Flavors of the South": 4 courses + signature cocktail 65,000 Ar</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galerie Swiper Premium -->
+  <section class="py-5">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="badge-luxury"><i class="fas fa-camera"></i> L'Art de Recevoir</span>
+        <h2 class="display-5 serif fw-semibold mt-2"><span class="lang-fr">Cadre & Ambiance</span><span class="lang-en">Atmosphere & Setting</span></h2>
+        <div class="gold-divider"></div>
+      </div>
+      <div class="swiper gallery-swiper" data-aos="zoom-in">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="Image/Salle.png" alt="Salle"></div>
+          <div class="swiper-slide"><img src="Image/soupe.png" alt="Plat signature"></div>
+          <div class="swiper-slide"><img src="Image/mine.png" alt="Salle chaleureuse"></div>
+          <div class="swiper-slide"><img src="Image/frt.png" alt="Service attentionné"></div>
+        </div>
+        <div class="swiper-pagination mt-4"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Réservation -->
+  <section id="reservation" class="py-5">
+    <div class="container">
+      <div class="cta-premium text-white" data-aos="flip-up">
+        <div class="row align-items-center">
+          <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
+            <h3 class="display-6 serif fw-semibold"><span class="lang-fr">Réservez votre expérience</span><span class="lang-en">Reserve your experience</span></h3>
+            <p class="opacity-75 mt-2"><i class="fas fa-map-pin me-2"></i> Ambalakajaha, Ambalavao 303</p>
+            <div class="d-flex flex-wrap gap-4 mt-3">
+              <div><i class="far fa-clock me-2"></i> <span class="lang-fr">Tous les jours 8:00 – 22:00</span><span class="lang-en">Daily 08:00 AM – 10:00 PM</span></div>
+              <div><i class="fas fa-phone-alt me-2"></i> +261 34 38 029 63</div>
+            </div>
+          </div>
+          <div class="col-lg-6 text-center text-lg-end">
+            <a href="https://wa.me/261343802963?text=Bonjour%20Zebu%20Resto%20-%20Réservation%20table%20pour%20ce%20soir" class="whatsapp-premium text-decoration-none d-inline-flex align-items-center gap-2" target="_blank">
+              <i class="fab fa-whatsapp fa-2x"></i> 
+              <span class="fw-bold fs-5"><span class="lang-fr">Réserver via WhatsApp</span><span class="lang-en">Book on WhatsApp</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer-premium py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center text-md-start">
+        <img src="Image/ChatGPT_Image_Jun_14__2026__12_01_51_PM-removebg-preview.png" alt="logo" style="height: 45px; opacity: 0.9;">
+        <p class="mt-3 small" style="max-width: 350px;">© 2026 ZEBU GASY TOUR & Zébu Resto – Voyages & Gastronomie d'altitude.<br>Zébu Resto, une table engagée pour le terroir malgache.</p>
+      </div>
+      <div class="col-md-3 text-center text-md-start">
+        <h6 class="serif text-gold mb-3" style="color: var(--gold-muted);">Zébu Resto</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><a href="#" class="footer-link"><span class="lang-fr">Carte & événements privés</span><span class="lang-en">Menu & private events</span></a></li>
+          <li class="mb-2"><a href="#" class="footer-link"><span class="lang-fr">Parking gratuit</span><span class="lang-en">Free parking</span></a></li>
+          <li class="mb-2"><a href="#" class="footer-link"><span class="lang-fr">Groupes et circuits</span><span class="lang-en">Groups & tours</span></a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 text-center text-md-start">
+        <h6 class="serif text-gold mb-3" style="color: var(--gold-muted);">Suivez-nous</h6>
+        <div class="d-flex gap-3 justify-content-center justify-content-md-start">
+          <a href="#" class="footer-link fs-5"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  AOS.init({ duration: 800, once: false, mirror: false });
+  
+  new Swiper('.gallery-swiper', {
+    loop: true,
+    spaceBetween: 24,
+    slidesPerView: 1,
+    autoplay: { delay: 4000, disableOnInteraction: false },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    breakpoints: { 768: { slidesPerView: 2 }, 992: { slidesPerView: 3 } }
+  });
+  
+  let currentLang = 'fr';
+  const langBtn = document.getElementById('langTogglePremium');
+  const langLabelSpan = document.getElementById('langLabelPremium');
+  function updateLangUI() {
+    document.documentElement.setAttribute('lang', currentLang);
+    const frElements = document.querySelectorAll('.lang-fr');
+    const enElements = document.querySelectorAll('.lang-en');
+    if (currentLang === 'fr') {
+      frElements.forEach(el => el.style.display = 'inline-block');
+      enElements.forEach(el => el.style.display = 'none');
+      langLabelSpan.innerText = 'EN';
+    } else {
+      frElements.forEach(el => el.style.display = 'none');
+      enElements.forEach(el => el.style.display = 'inline-block');
+      langLabelSpan.innerText = 'FR';
+    }
+  }
+  langBtn.addEventListener('click', () => {
+    currentLang = currentLang === 'fr' ? 'en' : 'fr';
+    updateLangUI();
+  });
+  updateLangUI();
+
+  const themeBtn = document.getElementById('themeTogglePremium');
+  const themeIconSpan = document.getElementById('themeIconPremium');
+  themeBtn.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      document.documentElement.removeAttribute('data-theme');
+      themeIconSpan.className = 'fas fa-moon';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeIconSpan.className = 'fas fa-sun';
+    }
+  });
+</script>
+</body>
+</html>

@@ -45,7 +45,7 @@
     .bg-light-custom { background-color: var(--sand) !important; transition: background 0.3s ease; }
     .text-muted-custom { color: var(--charcoal); opacity: 0.7; }
 
-    /* ===== NAVBAR COMME DANS L'IMAGE ===== */
+    /* ===== NAVBAR ===== */
     .navbar-premium {
       background: rgba(253, 251, 247, 0.98);
       backdrop-filter: blur(20px);
@@ -217,55 +217,6 @@
     .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(198,164,59,0.4); }
     .btn-gold:disabled { opacity: 0.6; transform: none; cursor: not-allowed; }
     .map-container iframe { width: 100%; border-radius: 28px; height: 280px; border: none; box-shadow: var(--shadow-sm); }
-
-    /* News Cards */
-    .news-card {
-      background: var(--card-bg, var(--cream));
-      border-radius: 20px;
-      overflow: hidden;
-      transition: var(--transition);
-      border: 1px solid rgba(198, 164, 59, 0.1);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .news-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-hover);
-      border-color: rgba(198, 164, 59, 0.3);
-    }
-    .news-card-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      background: var(--sand);
-    }
-    .news-card-body {
-      padding: 1.5rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .news-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.75rem;
-    }
-    .news-type {
-      font-size: 0.7rem;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .news-type.actualite { background: rgba(0,119,182,0.1); color: #0077B6; }
-    .news-type.promotion { background: rgba(198,164,59,0.15); color: #C6A43B; }
-    .news-type.evenement { background: rgba(45,106,79,0.1); color: #2D6A4F; }
-    .news-date { font-size: 0.75rem; color: var(--text-muted, #6c757d); }
-    .news-card-body h5 { margin-bottom: 0.5rem; }
-    .news-card-body p { flex: 1; }
 
     /* Footer */
     .footer-premium { background: linear-gradient(135deg, #0F1A1F, #0A1115); color: #A0A9B0; border-top: 1px solid rgba(198,164,59,0.2); }
@@ -633,7 +584,6 @@
       <div class="gold-divider"></div>
     </div>
     <div class="row g-4">
-      <!-- Les 6 destinations restent identiques -->
       <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100"><div class="destination-card h-100 d-flex flex-column justify-content-between"><div><img src="./Image/nosy-be.jpeg" class="card-img-top" alt="Nosy Be"><div class="p-4"><h5 class="fw-bold d-flex justify-content-between align-items-center">Nosy Be <span class="badge price-badge"><span class="lang-fr">Dès 450€ / pers</span><span class="lang-en">From 450€ / pers</span></span></h5><p class="text-muted-custom mt-2 small"><span class="lang-fr">L'Île aux Parfums. Un séjour balnéaire incluant les excursions incontournables vers les îles paradisiaques de Nosy Iranja, Nosy Komba et la réserve naturelle de Lokobe.</span><span class="lang-en">The Perfume Island. A seaside holiday including essential excursions to Nosy Iranja, Nosy Komba and Lokobe reserve.</span></p></div></div><div class="p-4 pt-0"><a href="#reservation" class="btn btn-outline-gold btn-sm"><span class="lang-fr">Réserver</span><span class="lang-en">Book</span> <i class="fas fa-chevron-right ms-1"></i></a></div></div></div>
       <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="150"><div class="destination-card h-100 d-flex flex-column justify-content-between"><div><img src="./Image/tWDwQ527.jpeg" class="card-img-top" alt="Sainte-Marie"><div class="p-4"><h5 class="fw-bold d-flex justify-content-between align-items-center">Sainte-Marie <span class="badge price-badge"><span class="lang-fr">Dès 380€ / pers</span><span class="lang-en">From 380€ / pers</span></span></h5><p class="text-muted-custom mt-2 small"><span class="lang-fr">Authentique et préservée. Idéal pour explorer l'Île aux Nattes, flâner sur les plages désertes et observer le safari des baleines à bosse.</span><span class="lang-en">Authentic and preserved. Ideal for exploring Île aux Nattes, deserted beaches and whale watching.</span></p></div></div><div class="p-4 pt-0"><a href="#reservation" class="btn btn-outline-gold btn-sm"><span class="lang-fr">Réserver</span><span class="lang-en">Book</span> <i class="fas fa-chevron-right ms-1"></i></a></div></div></div>
       <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200"><div class="destination-card h-100 d-flex flex-column justify-content-between"><div><img src="./Image/1wTQcBYV.jpeg" class="card-img-top" alt="Morondava"><div class="p-4"><h5 class="fw-bold d-flex justify-content-between align-items-center">Morondava <span class="badge price-badge"><span class="lang-fr">Dès 280€ / pers</span><span class="lang-en">From 280€ / pers</span></span></h5><p class="text-muted-custom mt-2 small"><span class="lang-fr">La porte d'entrée du Menabe. Célèbre pour son coucher de soleil magique sur l'Allée des Baobabs.</span><span class="lang-en">Gateway to Menabe. Famous for its magical sunset over the Avenue of the Baobabs.</span></p></div></div><div class="p-4 pt-0"><a href="#reservation" class="btn btn-outline-gold btn-sm"><span class="lang-fr">Réserver</span><span class="lang-en">Book</span> <i class="fas fa-chevron-right ms-1"></i></a></div></div></div>
@@ -672,20 +622,6 @@
   </div>
 </section>
 
-<!-- ACTUALITÉS -->
-<section id="actualites" class="py-5 bg-light-custom">
-  <div class="container">
-    <div class="text-center mb-5" data-aos="fade-up">
-      <span class="badge-subtle"><span class="lang-fr">Actualités</span><span class="lang-en">News</span></span>
-      <h2 class="display-5 fw-bold mt-2"><span class="lang-fr">Dernières</span><span class="lang-en">Latest</span> <span class="highlight"><span class="lang-fr">actualités</span><span class="lang-en">News</span></span></h2>
-      <div class="gold-divider"></div>
-    </div>
-    <div id="newsContainer" class="row g-4">
-      <div class="col-12 text-center text-muted"><p>Chargement des actualités...</p></div>
-    </div>
-  </div>
-</section>
-  
 <!-- RESERVATION -->
 <section id="reservation" class="py-5 bg-light-custom">
   <div class="container">
@@ -771,10 +707,10 @@
 <a href="https://wa.me/261381734308?text=Bonjour%20ZEBU%20GASY%20TOUR" class="btn-float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <!-- ===== CHATBOT FLOATING BUTTON ===== -->
-<!-- <button class="chatbot-toggle" id="chatbotToggle" title="Chat avec nous">
+<button class="chatbot-toggle" id="chatbotToggle" title="Chat avec nous">
   <i class="fas fa-comment-dots"></i>
   <span class="notification-dot"></span>
-</button> -->
+</button>
 
 <!-- ===== CHATBOT WINDOW ===== -->
 <div class="chatbot-window" id="chatbotWindow">
@@ -870,92 +806,6 @@
     submitBtn.disabled = false;
     spinner.classList.add('d-none');
   });
-
-  // =============================================
-  // CHARGER LES ACTUALITÉS DEPUIS GITHUB
-  // =============================================
-  async function loadNews() {
-    const container = document.getElementById('newsContainer');
-    
-    try {
-      // Charger depuis GitHub
-      const url = `https://raw.githubusercontent.com/VOTRE_NOM_UTILISATEUR/VOTRE_REPO/main/data/news.json`;
-      const response = await fetch(url);
-      
-      let newsData = [];
-      if (response.ok) {
-        newsData = await response.json();
-        // Sauvegarder dans localStorage pour le fallback
-        localStorage.setItem('zgt_news', JSON.stringify(newsData));
-      } else {
-        // Fallback: utiliser localStorage
-        newsData = JSON.parse(localStorage.getItem('zgt_news')) || [];
-      }
-      
-      // Log pour déboguer
-      console.log('Données chargées depuis GitHub:', newsData);
-      
-      if (newsData.length === 0) {
-        // Données par défaut
-        newsData = [
-          { id: 1, title: 'Nouveau circuit : Découverte du Sud Sauvage', content: 'Partez pour une aventure de 7 jours à travers le Grand Sud de Madagascar.', date: '2026-06-16', type: 'promotion', image: '', active: true },
-          { id: 2, title: 'Promotion : -15% sur Nosy Be', content: 'Réservez votre séjour à Nosy Be avant le 30 juillet et bénéficiez de 15% de réduction.', date: '2026-06-15', type: 'promotion', image: '', active: true },
-          { id: 3, title: 'Nouveau menu au Zébu Resto', content: 'Découvrez notre nouvelle carte automnale avec des plats signatures.', date: '2026-06-14', type: 'actualite', image: '', active: true }
-        ];
-        localStorage.setItem('zgt_news', JSON.stringify(newsData));
-      }
-      
-      // Filtrer les actualités actives
-      const activeNews = newsData.filter(n => n.active === true);
-      console.log('Actualités actives:', activeNews);
-      
-      if (activeNews.length === 0) {
-        container.innerHTML = `<div class="col-12 text-center text-muted"><p>Aucune actualité disponible pour le moment.</p></div>`;
-        return;
-      }
-      
-      const displayNews = activeNews.slice(0, 3);
-      container.innerHTML = displayNews.map(n => {
-        const typeIcon = n.type === 'promotion' ? 'fa-tags' : n.type === 'evenement' ? 'fa-calendar' : 'fa-newspaper';
-        
-        let imageHtml = '';
-        if (n.image && n.image !== '' && n.image !== 'null' && n.image !== 'undefined') {
-          if (n.image.startsWith('data:image') || n.image.startsWith('http')) {
-            imageHtml = `<img src="${n.image}" class="news-card-image" alt="${n.title}">`;
-          } else {
-            imageHtml = `<img src="./Image/${n.image}" class="news-card-image" alt="${n.title}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'news-card-image d-flex align-items-center justify-content-center text-muted\\' style=\\'background: var(--sand, #f0ece6);\\'><i class=\\'fas fa-image fa-3x\\' style=\\'opacity:0.3;\\'></i></div>'">`;
-          }
-        } else {
-          imageHtml = `<div class="news-card-image d-flex align-items-center justify-content-center text-muted" style="background: var(--sand, #f0ece6);">
-            <i class="fas fa-image fa-3x" style="opacity:0.3;"></i>
-          </div>`;
-        }
-        
-        return `
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="news-card">
-              ${imageHtml}
-              <div class="news-card-body">
-                <div class="news-card-header">
-                  <span class="news-type ${n.type}"><i class="fas ${typeIcon} me-1"></i> ${n.type}</span>
-                  <span class="news-date">${n.date}</span>
-                </div>
-                <h5 class="fw-bold">${n.title}</h5>
-                <p class="text-muted-custom small">${n.content}</p>
-              </div>
-            </div>
-          </div>
-        `;
-      }).join('');
-      
-      if (typeof AOS !== 'undefined') {
-        AOS.refresh();
-      }
-    } catch (error) {
-      console.error('Erreur chargement actualités:', error);
-      container.innerHTML = `<div class="col-12 text-center text-muted"><p>Impossible de charger les actualités.</p></div>`;
-    }
-  }
 
   // =============================================
   // CHATBOT COMPLET
@@ -1180,7 +1030,8 @@
   // =============================================
   // INITIALISATION
   // =============================================
-  loadNews();
+  // La fonction loadNews a été supprimée car la section Actualités n'existe plus
+  console.log('Site ZEBU GASY TOUR chargé avec succès !');
 </script>
 </body>
 </html>

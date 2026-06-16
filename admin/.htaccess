@@ -1,8 +1,0 @@
-# Protéger le dossier admin
-Order Deny,Allow
-Deny from all
-Allow from 127.0.0.1
-Allow from ::1
-
-# Autoriser l'accès depuis votre IP (remplacez par votre IP)
-# Allow from 192.168.1.100

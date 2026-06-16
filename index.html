@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="description" content="ZEBU GASY TOUR - Agence de voyage et tour opérateur à Madagascar. Découvrez des circuits exclusifs, destinations paradisiaques et aventures uniques sur l'île rouge.">
-  <meta name="keywords" content="Madagascar, voyage, tour opérateur, ZEBU GASY TOUR, Nosy Be, Sainte-Marie, Morondava, Tsingy">
+  <meta name="description" content="ZEBU GASY TOUR - Agence de voyage et tour opérateur à Madagascar.">
+  <meta name="keywords" content="Madagascar, voyage, tour opérateur, ZEBU GASY TOUR">
   <meta name="author" content="ZEBU GASY TOUR">
   <title>ZEBU GASY TOUR | Agence de voyage Madagascar</title>
   
-  <!-- Bootstrap 5 CSS + Icons + AOS + Swiper + Font Awesome + Google Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
@@ -16,19 +15,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Palette Premium Rafinée */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --cream: #FDFBF7;
       --charcoal: #1E2A2F;
       --gold-muted: #C6A43B;
       --gold-bright: #DAB75D;
-      --gold-dark: #A17F2A;
       --ocean: #0077B6;
       --tropical: #2D6A4F;
       --sand: #E8DDD0;
@@ -36,15 +28,12 @@
       --shadow-hover: 0 30px 45px -20px rgba(0,0,0,0.15);
       --transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
-
-    /* Mode sombre */
     [data-theme="dark"] {
       --cream: #12181C;
       --charcoal: #E9ECEF;
       --sand: #1F2A2F;
       --shadow-sm: 0 20px 35px -15px rgba(0,0,0,0.3);
     }
-
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--cream);
@@ -52,51 +41,29 @@
       transition: background-color 0.4s ease, color 0.3s;
       overflow-x: hidden;
     }
-
-    h1, h2, h3, h4, .serif {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
+    h1, h2, h3, h4, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 600; letter-spacing: -0.02em; }
     .bg-light-custom { background-color: var(--sand) !important; transition: background 0.3s ease; }
     .text-muted-custom { color: var(--charcoal); opacity: 0.7; }
 
-    /* Navbar */
+    /* ===== NAVBAR COMME DANS L'IMAGE ===== */
     .navbar-premium {
       background: rgba(253, 251, 247, 0.98);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(198, 164, 59, 0.2);
-      padding: 0.9rem 0;
+      padding: 0.7rem 0;
       transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       box-shadow: 0 2px 25px rgba(0,0,0,0.03);
     }
-    [data-theme="dark"] .navbar-premium {
-      background: rgba(18, 24, 28, 0.98);
-      border-bottom: 1px solid rgba(198, 164, 59, 0.25);
-    }
+    [data-theme="dark"] .navbar-premium { background: rgba(18, 24, 28, 0.98); border-bottom: 1px solid rgba(198, 164, 59, 0.25); }
+    .navbar-premium.scrolled { padding: 0.4rem 0; background: rgba(253, 251, 247, 0.98); box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
+    [data-theme="dark"] .navbar-premium.scrolled { background: rgba(18, 24, 28, 0.98); }
     
-    .navbar-premium.scrolled {
-      padding: 0.5rem 0;
-      background: rgba(253, 251, 247, 0.98);
-      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
-    }
-    [data-theme="dark"] .navbar-premium.scrolled {
-      background: rgba(18, 24, 28, 0.98);
-    }
-
-    .brand-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-      transition: transform 0.3s ease;
-    }
+    .brand-wrapper { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
     .brand-wrapper:hover { transform: translateX(3px); }
-    .logo-img { height: 52px; width: auto; transition: all 0.3s ease; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.05)); }
+    .logo-img { height: 45px; width: auto; transition: all 0.3s ease; }
     .logo-img:hover { transform: scale(1.03); }
     .logo-text {
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       font-weight: 800;
       background: linear-gradient(135deg, var(--ocean) 0%, var(--tropical) 100%);
       -webkit-background-clip: text;
@@ -104,161 +71,111 @@
       color: transparent;
       letter-spacing: -0.3px;
     }
-
-    .nav-link-premium { 
+    
+    .nav-link-premium {
       font-weight: 500; 
       color: var(--charcoal); 
-      padding: 0.5rem 1rem;
+      padding: 0.4rem 0.8rem;
       margin: 0 0.1rem;
       transition: all 0.3s ease;
       position: relative;
-      border-radius: 50px;
-      font-size: 0.9rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
       text-decoration: none;
       display: inline-block;
     }
-    .nav-link-premium::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
+    .nav-link-premium::after {
+      content: ''; 
+      position: absolute; 
+      bottom: 2px; 
+      left: 50%; 
       transform: translateX(-50%);
-      width: 0;
-      height: 2px;
+      width: 0; 
+      height: 2px; 
       background: linear-gradient(90deg, var(--gold-muted), var(--gold-bright));
-      transition: width 0.3s ease;
+      transition: width 0.3s ease; 
       border-radius: 2px;
     }
-    .nav-link-premium:hover::before { width: 70%; }
+    .nav-link-premium:hover::after { width: 60%; }
     .nav-link-premium:hover { 
       color: var(--gold-muted); 
-      background: rgba(198, 164, 59, 0.08);
-      transform: translateY(-2px);
+      background: rgba(198, 164, 59, 0.06);
     }
-
-    .header-actions { display: flex; align-items: center; gap: 0.75rem; }
-    .icon-btn {
-      background: rgba(198, 164, 59, 0.1);
-      border: none;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--charcoal);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .icon-btn:hover { background: var(--gold-muted); color: white; transform: translateY(-2px); }
+    
     .btn-reserve-premium {
-      background: linear-gradient(135deg, var(--ocean), var(--tropical));
-      color: white;
+      background: linear-gradient(135deg, var(--ocean), var(--tropical)); 
+      color: white; 
       border-radius: 50px;
-      padding: 10px 28px;
-      transition: all 0.3s ease;
-      border: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
+      padding: 8px 22px; 
+      transition: all 0.3s ease; 
+      border: none; 
+      font-weight: 600; 
+      font-size: 0.85rem;
+      text-decoration: none; 
       display: inline-block;
+      box-shadow: 0 4px 12px rgba(0,119,182,0.2);
     }
     .btn-reserve-premium:hover { 
       transform: translateY(-2px); 
       box-shadow: 0 8px 20px rgba(0,119,182,0.35);
-      background: linear-gradient(135deg, var(--tropical), var(--ocean));
-      color: white;
+      background: linear-gradient(135deg, var(--tropical), var(--ocean)); 
+      color: white; 
     }
-
-    .navbar-toggler-custom {
-      border: none;
-      background: rgba(198, 164, 59, 0.1);
-      padding: 10px 12px;
-      border-radius: 12px;
-      transition: all 0.3s;
-    }
+    
+    .navbar-toggler-custom { border: none; background: rgba(198, 164, 59, 0.1); padding: 8px 12px; border-radius: 12px; transition: all 0.3s; }
     .navbar-toggler-custom:hover { background: var(--gold-muted); }
     .navbar-toggler-custom:focus { box-shadow: none; }
-
+    .header-actions { display: flex; align-items: center; gap: 0.5rem; }
+    .icon-btn {
+      background: rgba(198, 164, 59, 0.1); border: none; width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; color: var(--charcoal);
+      transition: all 0.3s ease; cursor: pointer;
+    }
+    .icon-btn:hover { background: var(--gold-muted); color: white; transform: translateY(-2px); }
+    
     @media (max-width: 991px) {
-      .nav-link-premium { padding: 0.6rem 1.5rem; width: 100%; text-align: center; display: block; }
-      .header-actions { justify-content: center; margin-top: 0.5rem; }
-      .logo-img { height: 42px; }
+      .nav-link-premium { padding: 0.6rem 1.2rem; width: 100%; text-align: center; display: block; }
+      .header-actions { justify-content: center; margin-top: 0.5rem; flex-wrap: wrap; }
+      .logo-img { height: 38px; }
+      .logo-text { font-size: 1rem; }
     }
 
     /* Hero */
     .hero-section {
       min-height: 100vh;
       background: linear-gradient(115deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.65) 100%), url('./Image/_H_EXBcf.jpeg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      position: relative;
+      background-size: cover; background-position: center; background-attachment: fixed; position: relative;
     }
     .hero-section::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 150px;
-      background: linear-gradient(to top, var(--cream), transparent);
-      pointer-events: none;
+      content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 150px;
+      background: linear-gradient(to top, var(--cream), transparent); pointer-events: none;
     }
     .badge-luxury {
-      background: rgba(0,0,0,0.45);
-      backdrop-filter: blur(8px);
-      padding: 0.6rem 1.5rem;
-      border-radius: 60px;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      font-weight: 500;
-      border: 1px solid rgba(218,183,93,0.5);
+      background: rgba(0,0,0,0.45); backdrop-filter: blur(8px); padding: 0.6rem 1.5rem; border-radius: 60px;
+      font-size: 0.8rem; letter-spacing: 2px; font-weight: 500; border: 1px solid rgba(218,183,93,0.5);
     }
     .btn-hero {
-      background: linear-gradient(135deg, var(--gold-muted), var(--gold-bright));
-      color: #1e2a32;
-      font-weight: 700;
-      border-radius: 50px;
-      padding: 14px 38px;
-      transition: var(--transition);
-      border: none;
-      text-decoration: none;
-      display: inline-block;
+      background: linear-gradient(135deg, var(--gold-muted), var(--gold-bright)); color: #1e2a32;
+      font-weight: 700; border-radius: 50px; padding: 14px 38px; transition: var(--transition);
+      border: none; text-decoration: none; display: inline-block;
     }
     .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(198,164,59,0.4); color: #0A0E10; }
     .btn-wa {
-      background: #25D366;
-      color: white;
-      border-radius: 50px;
-      padding: 14px 38px;
-      transition: var(--transition);
-      text-decoration: none;
-      display: inline-block;
+      background: #25D366; color: white; border-radius: 50px; padding: 14px 38px;
+      transition: var(--transition); text-decoration: none; display: inline-block;
     }
-    .btn-wa:hover { transform: translateY(-3px); background: #128C7E; color: white; box-shadow: 0 8px 25px rgba(37,211,102,0.3);}
-
+    .btn-wa:hover { transform: translateY(-3px); background: #128C7E; color: white; box-shadow: 0 8px 25px rgba(37,211,102,0.3); }
     .badge-subtle {
-      background: rgba(198, 164, 59, 0.15);
-      color: var(--gold-muted);
-      padding: 6px 18px;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      display: inline-block;
+      background: rgba(198, 164, 59, 0.15); color: var(--gold-muted); padding: 6px 18px;
+      border-radius: 40px; font-weight: 600; font-size: 0.8rem; letter-spacing: 1px; display: inline-block;
     }
     .highlight { color: var(--gold-muted); }
     .gold-divider { width: 80px; height: 3px; background: linear-gradient(90deg, transparent, var(--gold-muted), transparent); margin: 18px auto 0; border-radius: 4px; }
 
     /* Cards */
     .destination-card {
-      transition: var(--transition);
-      border-radius: 28px;
-      overflow: hidden;
-      background: var(--cream);
-      border: 1px solid rgba(198, 164, 59, 0.12);
-      cursor: pointer;
+      transition: var(--transition); border-radius: 28px; overflow: hidden; background: var(--cream);
+      border: 1px solid rgba(198, 164, 59, 0.12); cursor: pointer;
     }
     .destination-card:hover { transform: translateY(-12px) scale(1.01); box-shadow: var(--shadow-hover); border-color: rgba(198, 164, 59, 0.3); }
     .destination-card img { transition: transform 0.6s ease; height: 250px; object-fit: cover; width: 100%; }
@@ -266,14 +183,9 @@
     .price-badge { background: linear-gradient(135deg, var(--tropical), #1e4a3a); color: white; border-radius: 30px; font-size: 0.7rem; padding: 4px 12px; font-weight: 600; }
     .btn-outline-gold { border: 1.5px solid var(--gold-muted); color: var(--gold-muted); border-radius: 40px; background: transparent; padding: 6px 20px; transition: var(--transition); text-decoration: none; display: inline-block; }
     .btn-outline-gold:hover { background: var(--gold-muted); color: white; transform: translateY(-2px); }
-
     .circuit-card {
-      background: var(--cream);
-      transition: var(--transition);
-      border-bottom: 3px solid var(--gold-muted);
-      border-radius: 24px;
-      cursor: pointer;
-      box-shadow: var(--shadow-sm);
+      background: var(--cream); transition: var(--transition); border-bottom: 3px solid var(--gold-muted);
+      border-radius: 24px; cursor: pointer; box-shadow: var(--shadow-sm);
     }
     .circuit-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
     .circuit-card i { transition: transform 0.3s ease; }
@@ -288,18 +200,14 @@
     .swiper-button-next, .swiper-button-prev { color: var(--gold-muted); background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); border-radius: 50%; width: 48px; height: 48px; transition: all 0.3s; }
     .swiper-button-next::after, .swiper-button-prev::after { font-size: 1.2rem; font-weight: bold; }
     .swiper-button-next:hover, .swiper-button-prev:hover { background: var(--gold-muted); color: white; transform: scale(1.1); }
-
     .testimonial-swiper { width: 100%; padding: 20px 0; }
     .testimonial-card { background: var(--cream) !important; transition: var(--transition); cursor: pointer; border-radius: 28px; border: 1px solid rgba(198,164,59,0.1); }
     .testimonial-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
 
     /* Form */
     .glass-form {
-      background: rgba(253, 251, 247, 0.85);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(198, 164, 59, 0.25);
-      transition: var(--transition);
-      border-radius: 32px;
+      background: rgba(253, 251, 247, 0.85); backdrop-filter: blur(12px);
+      border: 1px solid rgba(198, 164, 59, 0.25); transition: var(--transition); border-radius: 32px;
     }
     [data-theme="dark"] .glass-form { background: rgba(30, 42, 50, 0.85); }
     .glass-form:hover { box-shadow: var(--shadow-hover); border-color: var(--gold-muted); }
@@ -308,32 +216,299 @@
     .btn-gold { background: linear-gradient(135deg, var(--gold-muted), var(--gold-bright)); color: #1e2a32; font-weight: 700; border-radius: 50px; transition: var(--transition); border: none; padding: 14px; width: 100%; }
     .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(198,164,59,0.4); }
     .btn-gold:disabled { opacity: 0.6; transform: none; cursor: not-allowed; }
-
     .map-container iframe { width: 100%; border-radius: 28px; height: 280px; border: none; box-shadow: var(--shadow-sm); }
+
+    /* News Cards */
+    .news-card {
+      background: var(--card-bg, var(--cream));
+      border-radius: 20px;
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid rgba(198, 164, 59, 0.1);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .news-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(198, 164, 59, 0.3);
+    }
+    .news-card-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: var(--sand);
+    }
+    .news-card-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .news-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .news-type {
+      font-size: 0.7rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .news-type.actualite { background: rgba(0,119,182,0.1); color: #0077B6; }
+    .news-type.promotion { background: rgba(198,164,59,0.15); color: #C6A43B; }
+    .news-type.evenement { background: rgba(45,106,79,0.1); color: #2D6A4F; }
+    .news-date { font-size: 0.75rem; color: var(--text-muted, #6c757d); }
+    .news-card-body h5 { margin-bottom: 0.5rem; }
+    .news-card-body p { flex: 1; }
 
     /* Footer */
     .footer-premium { background: linear-gradient(135deg, #0F1A1F, #0A1115); color: #A0A9B0; border-top: 1px solid rgba(198,164,59,0.2); }
     .footer-premium a { color: #B0B7BE; text-decoration: none; transition: 0.2s; }
     .footer-premium a:hover { color: var(--gold-muted); transform: translateX(3px); display: inline-block; }
 
-    /* WhatsApp Flottant */
-    .btn-float-wa {
+    /* ===== CHATBOT FLOATING BUTTON ===== */
+    .chatbot-toggle {
       position: fixed;
       bottom: 30px;
-      right: 30px;
-      background: #25D366;
-      width: 62px;
-      height: 62px;
+      right: 100px;
+      background: linear-gradient(135deg, #0077B6, #2D6A4F);
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 25px rgba(0,119,182,0.3);
+      z-index: 999;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      animation: chatPulse 2.5s infinite;
+      cursor: pointer;
+      border: none;
+      font-size: 1.6rem;
+    }
+    .chatbot-toggle:hover {
+      transform: scale(1.12);
+      box-shadow: 0 12px 35px rgba(0,119,182,0.5);
+    }
+    .chatbot-toggle .notification-dot {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 16px;
+      height: 16px;
+      background: #25D366;
+      border-radius: 50%;
+      border: 3px solid var(--cream);
+      animation: blink 1.5s infinite;
+    }
+    @keyframes chatPulse {
+      0%, 100% { box-shadow: 0 8px 25px rgba(0,119,182,0.3); transform: scale(1); }
+      50% { box-shadow: 0 8px 35px rgba(0,119,182,0.6); transform: scale(1.05); }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Chatbot Window */
+    .chatbot-window {
+      position: fixed;
+      bottom: 105px;
+      right: 30px;
+      width: 380px;
+      max-width: 90vw;
+      max-height: 500px;
+      height: 500px;
+      background: var(--cream);
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
       z-index: 1000;
-      transition: var(--transition);
-      animation: waPulse 2s infinite;
-      text-decoration: none;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(198, 164, 59, 0.2);
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .chatbot-window.open { display: flex; animation: slideUp 0.3s ease; }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    [data-theme="dark"] .chatbot-window { background: #1A242D; border-color: rgba(198,164,59,0.3); }
+
+    .chatbot-header {
+      background: linear-gradient(135deg, #0077B6, #2D6A4F);
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      flex-shrink: 0;
+    }
+    .chatbot-header .chatbot-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .chatbot-header .chatbot-title img {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    .chatbot-header .chatbot-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: 0.2s;
+      padding: 4px 8px;
+    }
+    .chatbot-header .chatbot-close:hover { opacity: 1; }
+
+    .chatbot-messages {
+      flex: 1;
+      padding: 0.8rem 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .chatbot-messages::-webkit-scrollbar { width: 4px; }
+    .chatbot-messages::-webkit-scrollbar-track { background: transparent; }
+    .chatbot-messages::-webkit-scrollbar-thumb { background: var(--gold-muted); border-radius: 4px; }
+
+    .message {
+      max-width: 85%;
+      padding: 0.6rem 1rem;
+      border-radius: 14px;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      word-wrap: break-word;
+      animation: messageIn 0.3s ease;
+    }
+    @keyframes messageIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .message.bot {
+      background: var(--sand);
+      color: var(--charcoal);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+    .message.user {
+      background: linear-gradient(135deg, var(--gold-muted), var(--gold-bright));
+      color: #1E2A2F;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    [data-theme="dark"] .message.bot { background: #2A3A45; color: #E9ECEF; }
+
+    .quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.3rem;
+      align-self: flex-start;
+    }
+    .quick-reply {
+      background: rgba(198, 164, 59, 0.12);
+      color: var(--gold-muted);
+      border: 1px solid rgba(198, 164, 59, 0.15);
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+    .quick-reply:hover {
+      background: var(--gold-muted);
+      color: #1E2A2F;
+      transform: translateY(-2px);
+    }
+    [data-theme="dark"] .quick-reply { background: rgba(198,164,59,0.1); }
+
+    .chatbot-input {
+      padding: 0.6rem 1rem;
+      border-top: 1px solid rgba(198,164,59,0.15);
+      display: flex;
+      gap: 0.5rem;
+      flex-shrink: 0;
+      background: var(--cream);
+    }
+    [data-theme="dark"] .chatbot-input { background: #1A242D; border-top-color: rgba(198,164,59,0.2); }
+    .chatbot-input input {
+      flex: 1;
+      border: 1px solid rgba(198,164,59,0.2);
+      border-radius: 30px;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      background: var(--cream);
+      color: var(--charcoal);
+      outline: none;
+      transition: 0.3s;
+    }
+    .chatbot-input input:focus { border-color: var(--gold-muted); box-shadow: 0 0 0 3px rgba(198,164,59,0.15); }
+    [data-theme="dark"] .chatbot-input input { background: #2A3A45; color: #E9ECEF; border-color: rgba(198,164,59,0.3); }
+    .chatbot-input .send-btn {
+      background: linear-gradient(135deg, var(--gold-muted), var(--gold-bright));
+      color: #1E2A2F;
+      border: none;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chatbot-input .send-btn:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(198,164,59,0.3); }
+    .chatbot-input .send-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .typing-indicator {
+      display: none;
+      padding: 0.3rem 1rem;
+      align-self: flex-start;
+    }
+    .typing-indicator span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold-muted);
+      margin: 0 2px;
+      animation: typing 1.4s infinite both;
+    }
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-8px); opacity: 1; }
+    }
+    .typing-indicator.active { display: flex; }
+
+    /* WhatsApp Flottant */
+    .btn-float-wa {
+      position: fixed; bottom: 30px; right: 30px; background: #25D366; width: 60px; height: 60px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2); z-index: 1000; transition: var(--transition);
+      animation: waPulse 2s infinite; text-decoration: none; font-size: 1.8rem;
     }
     @keyframes waPulse {
       0%, 100% { box-shadow: 0 8px 20px rgba(37,211,102,0.3); transform: scale(1); }
@@ -343,36 +518,16 @@
 
     /* Toast Notification */
     .toast-notification {
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      background: var(--tropical);
-      color: white;
-      padding: 16px 32px;
-      border-radius: 16px;
-      font-weight: 500;
-      z-index: 1100;
-      opacity: 0;
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      pointer-events: none;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-      font-size: 0.95rem;
-      max-width: 500px;
-      transform: translateY(20px);
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      position: fixed; bottom: 100px; right: 30px; background: var(--tropical); color: white;
+      padding: 14px 28px; border-radius: 16px; font-weight: 500; z-index: 1100;
+      opacity: 0; transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      pointer-events: none; box-shadow: 0 8px 30px rgba(0,0,0,0.2); font-size: 0.9rem;
+      max-width: 500px; transform: translateY(20px); display: flex; align-items: center; gap: 12px;
     }
-    .toast-notification.show { 
-      opacity: 1; 
-      transform: translateY(0);
-      pointer-events: auto;
-    }
+    .toast-notification.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
     .toast-notification.error { background: #dc3545; }
     .toast-notification.success { background: var(--tropical); }
-    .toast-notification .toast-icon {
-      font-size: 1.5rem;
-    }
+    .toast-notification .toast-icon { font-size: 1.3rem; }
 
     /* Langues */
     [lang="en"] .lang-fr, [lang="fr"] .lang-en { display: none !important; }
@@ -382,23 +537,24 @@
       .gallery-swiper .swiper-slide img { height: 220px; }
       .btn-hero, .btn-wa { padding: 10px 24px; font-size: 0.9rem; }
       .toast-notification { bottom: 100px; right: 20px; left: 20px; text-align: center; justify-content: center; }
+      .chatbot-window { bottom: 90px; right: 10px; width: calc(100% - 20px); height: 400px; max-height: 70vh; }
+      .chatbot-toggle { bottom: 20px; right: 80px; width: 50px; height: 50px; font-size: 1.3rem; }
+      .btn-float-wa { bottom: 20px; right: 15px; width: 50px; height: 50px; font-size: 1.4rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- ===== NAVBAR ===== -->
 <nav class="navbar navbar-expand-lg fixed-top navbar-premium" id="mainNav">
   <div class="container">
     <a class="brand-wrapper" href="#">
       <img src="./Image/logo_zebugasytour-removebg-preview.png" class="logo-img" alt="Logo ZEBU GASY TOUR">
       <span class="logo-text">ZEBU GASY TOUR</span>
     </a>
-    
     <button class="navbar-toggler-custom d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-      <i class="fas fa-bars" style="color: var(--gold-muted); font-size: 1.3rem;"></i>
+      <i class="fas fa-bars" style="color: var(--gold-muted); font-size: 1.2rem;"></i>
     </button>
-    
     <div class="collapse navbar-collapse" id="navbarMain">
       <ul class="navbar-nav mx-auto nav-menu">
         <li class="nav-item"><a class="nav-link-premium" href="#hero"><span class="lang-fr">Accueil</span><span class="lang-en">Home</span></a></li>
@@ -410,9 +566,8 @@
         <li class="nav-item"><a class="nav-link-premium" href="#temoignages"><span class="lang-fr">Témoignages</span><span class="lang-en">Reviews</span></a></li>
         <li class="nav-item"><a class="nav-link-premium" href="#reservation"><span class="lang-fr">Contact</span><span class="lang-en">Contact</span></a></li>
       </ul>
-      
       <div class="header-actions">
-        <button class="icon-btn" id="langToggle"><i class="fas fa-globe"></i> <span style="font-size: 0.75rem;" id="langLabel">EN</span></button>
+        <button class="icon-btn" id="langToggle"><i class="fas fa-globe"></i> <span style="font-size: 0.7rem;" id="langLabel">EN</span></button>
         <button class="icon-btn" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i></button>
         <a href="#reservation" class="btn-reserve-premium"><span class="lang-fr">Réservez</span><span class="lang-en">Book Now</span></a>
       </div>
@@ -478,6 +633,7 @@
       <div class="gold-divider"></div>
     </div>
     <div class="row g-4">
+      <!-- Les 6 destinations restent identiques -->
       <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100"><div class="destination-card h-100 d-flex flex-column justify-content-between"><div><img src="./Image/nosy-be.jpeg" class="card-img-top" alt="Nosy Be"><div class="p-4"><h5 class="fw-bold d-flex justify-content-between align-items-center">Nosy Be <span class="badge price-badge"><span class="lang-fr">Dès 450€ / pers</span><span class="lang-en">From 450€ / pers</span></span></h5><p class="text-muted-custom mt-2 small"><span class="lang-fr">L'Île aux Parfums. Un séjour balnéaire incluant les excursions incontournables vers les îles paradisiaques de Nosy Iranja, Nosy Komba et la réserve naturelle de Lokobe.</span><span class="lang-en">The Perfume Island. A seaside holiday including essential excursions to Nosy Iranja, Nosy Komba and Lokobe reserve.</span></p></div></div><div class="p-4 pt-0"><a href="#reservation" class="btn btn-outline-gold btn-sm"><span class="lang-fr">Réserver</span><span class="lang-en">Book</span> <i class="fas fa-chevron-right ms-1"></i></a></div></div></div>
       <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="150"><div class="destination-card h-100 d-flex flex-column justify-content-between"><div><img src="./Image/tWDwQ527.jpeg" class="card-img-top" alt="Sainte-Marie"><div class="p-4"><h5 class="fw-bold d-flex justify-content-between align-items-center">Sainte-Marie <span class="badge price-badge"><span class="lang-fr">Dès 380€ / pers</span><span class="lang-en">From 380€ / pers</span></span></h5><p class="text-muted-custom mt-2 small"><span class="lang-fr">Authentique et préservée. Idéal pour explorer l'Île aux Nattes, flâner sur les plages désertes et observer le safari des baleines à bosse.</span><span class="lang-en">Authentic and preserved. Ideal for exploring Île aux Nattes, deserted beaches and whale watching.</span></p></div></div><div class="p-4 pt-0"><a href="#reservation" class="btn btn-outline-gold btn-sm"><span class="lang-fr">Réserver</span><span class="lang-en">Book</span> <i class="fas fa-chevron-right ms-1"></i></a></div></div></div>
       <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200"><div class="destination-card h-100 d-flex flex-column justify-content-between"><div><img src="./Image/1wTQcBYV.jpeg" class="card-img-top" alt="Morondava"><div class="p-4"><h5 class="fw-bold d-flex justify-content-between align-items-center">Morondava <span class="badge price-badge"><span class="lang-fr">Dès 280€ / pers</span><span class="lang-en">From 280€ / pers</span></span></h5><p class="text-muted-custom mt-2 small"><span class="lang-fr">La porte d'entrée du Menabe. Célèbre pour son coucher de soleil magique sur l'Allée des Baobabs.</span><span class="lang-en">Gateway to Menabe. Famous for its magical sunset over the Avenue of the Baobabs.</span></p></div></div><div class="p-4 pt-0"><a href="#reservation" class="btn btn-outline-gold btn-sm"><span class="lang-fr">Réserver</span><span class="lang-en">Book</span> <i class="fas fa-chevron-right ms-1"></i></a></div></div></div>
@@ -516,63 +672,63 @@
   </div>
 </section>
 
-<!-- ================================================= -->
-<!-- SECTION RESERVATION & CONTACT - AVEC AJAX        -->
-<!-- ================================================= -->
+<!-- ACTUALITÉS -->
+<section id="actualites" class="py-5 bg-light-custom">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="badge-subtle"><span class="lang-fr">Actualités</span><span class="lang-en">News</span></span>
+      <h2 class="display-5 fw-bold mt-2"><span class="lang-fr">Dernières</span><span class="lang-en">Latest</span> <span class="highlight"><span class="lang-fr">actualités</span><span class="lang-en">News</span></span></h2>
+      <div class="gold-divider"></div>
+    </div>
+    <div id="newsContainer" class="row g-4">
+      <div class="col-12 text-center text-muted"><p>Chargement des actualités...</p></div>
+    </div>
+  </div>
+</section>
+  
+<!-- RESERVATION -->
 <section id="reservation" class="py-5 bg-light-custom">
   <div class="container">
     <div class="row g-5">
       <div class="col-lg-6" data-aos="fade-right">
         <div class="p-4 p-md-5 glass-form">
           <h3 class="fw-bold mb-4"><span class="lang-fr">Planifiez votre voyage</span><span class="lang-en">Plan Your Trip</span></h3>
-          
           <form id="contactForm">
-            <!-- ACCESS KEY - Votre clé Web3Forms -->
             <input type="hidden" name="access_key" value="5bc57ae2-e027-4b53-be43-659cd70c0986">
-            
-            <!-- Configuration des emails -->
             <input type="hidden" name="subject" value="ZEBU GASY TOUR - Nouvelle demande de devis">
             <input type="hidden" name="from_name" value="Site Web ZEBU GASY TOUR">
-            
-            <!-- PAS DE REDIRECTION - L'utilisateur reste sur la page -->
-            
-            <!-- Anti-spam : botcheck (invisible) -->
             <input type="checkbox" name="botcheck" style="display: none;">
-            
-            <!-- Champs du formulaire -->
             <div class="mb-3">
               <label class="form-label fw-semibold"><span class="lang-fr">Nom complet</span><span class="lang-en">Full Name</span></label>
               <input type="text" name="name" class="form-control" required placeholder="ZEBU">
             </div>
-            
             <div class="mb-3">
               <label class="form-label fw-semibold">Email</label>
               <input type="email" name="email" class="form-control" required placeholder="zebu@exemple.com">
             </div>
-            
             <div class="mb-3">
               <label class="form-label fw-semibold"><span class="lang-fr">Téléphone</span><span class="lang-en">Phone</span></label>
               <input type="tel" name="phone" class="form-control" placeholder="+261 XX XXX XX">
             </div>
-            
             <div class="mb-3">
               <label class="form-label fw-semibold"><span class="lang-fr">Destination souhaitée</span><span class="lang-en">Desired Destination</span></label>
               <select name="destination" class="form-select">
                 <option>Nosy Be</option>
                 <option>Sainte-Marie</option>
-                <option>Route du Sud (RN7)</option>
+                <option>Isalo</option>
+                <option>Ifaty</option>
+                <option>Andringitra</option>
+                <option>Andranomafana</option>
                 <option>Tsingy de Bemaraha</option>
                 <option>Massif du Makay</option>
-                <option>Andasibe-Mantadia</option>
+                <option>Andasibe</option>
                 <option>Autre / Projet Sur-mesure</option>
               </select>
             </div>
-            
             <div class="mb-4">
               <label class="form-label fw-semibold"><span class="lang-fr">Message</span><span class="lang-en">Message</span></label>
               <textarea name="message" class="form-control" rows="4" placeholder="Dites-nous en plus sur vos envies..."></textarea>
             </div>
-            
             <button type="submit" id="submitBtn" class="btn btn-gold">
               <span class="lang-fr">Envoyer la demande</span>
               <span class="lang-en">Submit Request</span>
@@ -581,8 +737,6 @@
           </form>
         </div>
       </div>
-      
-      <!-- Informations de contact -->
       <div class="col-lg-6 d-flex flex-column justify-content-between" data-aos="fade-left">
         <div>
           <h3 class="fw-bold mb-3"><span class="lang-fr">Contactez-nous</span><span class="lang-en">Get in Touch</span></h3>
@@ -606,15 +760,39 @@
 <footer class="footer-premium py-5">
   <div class="container">
     <div class="row g-4">
-      <div class="col-md-4"><img src="./Image/logo_zebugasytour-removebg-preview.png" alt="logo" style="height: 50px; opacity: 0.9;"><p class="small mt-3"><span class="lang-fr">Votre partenaire de confiance pour une immersion authentique, écoresponsable et mémorable sur l'île de Madagascar.</span><span class="lang-en">Your trusted partner for an authentic, eco-responsible, and memorable immersion in Madagascar.</span></p></div>
+      <div class="col-md-4"><img src="./Image/logo_zebugasytour-removebg-preview.png" alt="logo" style="height: 45px; opacity: 0.9;"><p class="small mt-3"><span class="lang-fr">Votre partenaire de confiance pour une immersion authentique, écoresponsable et mémorable sur l'île de Madagascar.</span><span class="lang-en">Your trusted partner for an authentic, eco-responsible, and memorable immersion in Madagascar.</span></p></div>
       <div class="col-md-4 text-md-center"><h5 class="fw-bold text-white mb-3"><span class="lang-fr">Liens rapides</span><span class="lang-en">Quick Links</span></h5><ul class="list-unstyled"><li class="mb-2"><a href="#hero"><span class="lang-fr">Accueil</span><span class="lang-en">Home</span></a></li><li class="mb-2"><a href="#destinations"><span class="lang-fr">Destinations</span><span class="lang-en">Destinations</span></a></li><li class="mb-2"><a href="restaurant.html"><span class="lang-fr">Zébu Resto</span><span class="lang-en">Zébu Resto</span></a></li><li class="mb-2"><a href="#reservation"><span class="lang-fr">Contact</span><span class="lang-en">Contact</span></a></li></ul></div>
-      <div class="col-md-4 text-md-end"><h5 class="fw-bold text-white mb-3"><span class="lang-fr">Suivez-nous</span><span class="lang-en">Follow Us</span></h5><div class="d-flex justify-content-md-end gap-3 fs-4"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-tripadvisor"></i></a></div><p class="small mt-3">© 2026 ZEBU GASY TOUR. <span class="lang-fr">Tous droits réservés.</span><span class="lang-en">All rights reserved.</span></p></div>
+      <div class="col-md-4 text-md-end"><h5 class="fw-bold text-white mb-3"><span class="lang-fr">Suivez-nous</span><span class="lang-en">Follow Us</span></h5><div class="d-flex justify-content-md-end gap-3 fs-4"><a href="https://web.facebook.com/zebugasytourmada"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-tripadvisor"></i></a></div><p class="small mt-3">© 2026 ZEBU GASY TOUR. <span class="lang-fr">Tous droits réservés.</span><span class="lang-en">All rights reserved.</span></p></div>
     </div>
   </div>
 </footer>
 
 <!-- WHATSAPP FLOATING BUTTON -->
-<a href="https://wa.me/261381734308?text=Bonjour%20ZEBU%20GASY%20TOUR" class="btn-float-wa" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a>
+<a href="https://wa.me/261381734308?text=Bonjour%20ZEBU%20GASY%20TOUR" class="btn-float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<!-- ===== CHATBOT FLOATING BUTTON ===== -->
+<!-- <button class="chatbot-toggle" id="chatbotToggle" title="Chat avec nous">
+  <i class="fas fa-comment-dots"></i>
+  <span class="notification-dot"></span>
+</button> -->
+
+<!-- ===== CHATBOT WINDOW ===== -->
+<div class="chatbot-window" id="chatbotWindow">
+  <div class="chatbot-header">
+    <div class="chatbot-title">
+      <img src="./Image/logo_zebugasytour-removebg-preview.png" alt="ZGT">
+      <span>ZEBU GASY TOUR</span>
+      <span style="font-size:0.6rem; opacity:0.7; font-weight:400;">| Assistant</span>
+    </div>
+    <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="chatbot-messages" id="chatbotMessages"></div>
+  <div class="typing-indicator" id="typingIndicator"><span></span><span></span><span></span></div>
+  <div class="chatbot-input">
+    <input type="text" id="chatbotInput" placeholder="Écrivez votre message...">
+    <button class="send-btn" id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
 
 <!-- TOAST NOTIFICATION -->
 <div id="toastMsg" class="toast-notification">
@@ -656,71 +834,303 @@
     const toast = document.getElementById('toastMsg');
     const toastText = document.getElementById('toastText');
     const icon = toast.querySelector('.toast-icon');
-    
     toastText.textContent = message;
     toast.className = 'toast-notification ' + type;
-    
-    if (type === 'success') {
-      icon.textContent = '✅';
-    } else {
-      icon.textContent = '❌';
-    }
-    
+    icon.textContent = type === 'success' ? '✅' : '❌';
     toast.classList.add('show');
-    
-    // Auto-fermeture après 5 secondes
     clearTimeout(window.toastTimeout);
-    window.toastTimeout = setTimeout(() => {
-      toast.classList.remove('show');
-    }, 5000);
+    window.toastTimeout = setTimeout(() => toast.classList.remove('show'), 5000);
   }
 
   // =============================================
-  // FORMULAIRE AJAX AVEC WEB3FORMS
+  // FORMULAIRE AJAX
   // =============================================
   document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    
     const submitBtn = document.getElementById('submitBtn');
     const spinner = document.getElementById('spinner');
     const formData = new FormData(this);
-    
-    // Désactiver le bouton
     submitBtn.disabled = true;
     spinner.classList.remove('d-none');
-    
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-      });
-      
+      const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
       const result = await response.json();
-      
       if (result.success) {
         const msg = document.documentElement.getAttribute('lang') === 'fr' 
           ? 'Demande envoyée avec succès ! Nous vous répondrons dans les 24h.' 
           : 'Request sent successfully! We will reply within 24h.';
         showToast(msg, 'success');
-        this.reset(); // Réinitialiser le formulaire
+        this.reset();
       } else {
-        const msg = document.documentElement.getAttribute('lang') === 'fr' 
-          ? 'Erreur lors de l\'envoi. Veuillez réessayer.' 
-          : 'Sending error. Please try again.';
-        showToast(msg, 'error');
+        showToast('Erreur lors de l\'envoi. Veuillez réessayer.', 'error');
       }
     } catch (error) {
-      console.error('Erreur:', error);
-      const msg = document.documentElement.getAttribute('lang') === 'fr' 
-        ? 'Erreur de connexion. Veuillez réessayer.' 
-        : 'Connection error. Please try again.';
-      showToast(msg, 'error');
+      showToast('Erreur de connexion. Veuillez réessayer.', 'error');
     }
-    
-    // Réactiver le bouton
     submitBtn.disabled = false;
     spinner.classList.add('d-none');
   });
+
+  // =============================================
+  // CHARGER LES ACTUALITÉS
+  // =============================================
+  function loadNews() {
+    const container = document.getElementById('newsContainer');
+    let newsData = JSON.parse(localStorage.getItem('zgt_news')) || [];
+    
+    // Log pour déboguer
+    console.log('Données chargées:', newsData);
+    
+    if (newsData.length === 0) {
+      newsData = [
+        { id: 1, title: 'Nouveau circuit : Découverte du Sud Sauvage', content: 'Partez pour une aventure de 7 jours à travers le Grand Sud de Madagascar.', date: '2026-06-16', type: 'promotion', image: '', active: true },
+        { id: 2, title: 'Promotion : -15% sur Nosy Be', content: 'Réservez votre séjour à Nosy Be avant le 30 juillet et bénéficiez de 15% de réduction.', date: '2026-06-15', type: 'promotion', image: '', active: true },
+        { id: 3, title: 'Nouveau menu au Zébu Resto', content: 'Découvrez notre nouvelle carte automnale avec des plats signatures.', date: '2026-06-14', type: 'actualite', image: '', active: true }
+      ];
+      localStorage.setItem('zgt_news', JSON.stringify(newsData));
+    }
+    
+    // Filtrer les actualités actives
+    const activeNews = newsData.filter(n => n.active === true);
+    console.log('Actualités actives:', activeNews);
+    
+    if (activeNews.length === 0) {
+      container.innerHTML = `<div class="col-12 text-center text-muted"><p>Aucune actualité disponible pour le moment.</p></div>`;
+      return;
+    }
+    
+    const displayNews = activeNews.slice(0, 3);
+    container.innerHTML = displayNews.map(n => {
+      const typeIcon = n.type === 'promotion' ? 'fa-tags' : n.type === 'evenement' ? 'fa-calendar' : 'fa-newspaper';
+      
+      // Gestion de l'image
+      let imageHtml = '';
+      if (n.image && n.image !== '' && n.image !== 'null' && n.image !== 'undefined' && n.image !== 'sud-sauvage.jpg') {
+        if (n.image.startsWith('data:image') || n.image.startsWith('http')) {
+          imageHtml = `<img src="${n.image}" class="news-card-image" alt="${n.title}">`;
+        } else {
+          imageHtml = `<img src="./Image/${n.image}" class="news-card-image" alt="${n.title}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'news-card-image d-flex align-items-center justify-content-center text-muted\\' style=\\'background: var(--sand, #f0ece6);\\'><i class=\\'fas fa-image fa-3x\\' style=\\'opacity:0.3;\\'></i></div>'">`;
+        }
+      } else {
+        imageHtml = `<div class="news-card-image d-flex align-items-center justify-content-center text-muted" style="background: var(--sand, #f0ece6);">
+          <i class="fas fa-image fa-3x" style="opacity:0.3;"></i>
+        </div>`;
+      }
+      
+      return `
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="news-card">
+            ${imageHtml}
+            <div class="news-card-body">
+              <div class="news-card-header">
+                <span class="news-type ${n.type}"><i class="fas ${typeIcon} me-1"></i> ${n.type}</span>
+                <span class="news-date">${n.date}</span>
+              </div>
+              <h5 class="fw-bold">${n.title}</h5>
+              <p class="text-muted-custom small">${n.content}</p>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+    
+    // Rafraîchir AOS
+    if (typeof AOS !== 'undefined') {
+      AOS.refresh();
+    }
+  }
+
+  // =============================================
+  // CHATBOT COMPLET
+  // =============================================
+  const chatbotToggle = document.getElementById('chatbotToggle');
+  const chatbotWindow = document.getElementById('chatbotWindow');
+  const chatbotClose = document.getElementById('chatbotClose');
+  const chatbotMessages = document.getElementById('chatbotMessages');
+  const chatbotInput = document.getElementById('chatbotInput');
+  const chatbotSend = document.getElementById('chatbotSend');
+  const typingIndicator = document.getElementById('typingIndicator');
+
+  // Base de connaissances du chatbot
+  const knowledgeBase = {
+    mg: {
+      welcome: "Salama! 🖐️ ZEBU GASY TOUR no manampy anao. Inona no ilainao?",
+      help: "Afaka manampy anao amin'ny:",
+      options: ["💼 Fitsangatsanganana", "🏨 Hotely", "🚗 Fiara", "💰 Vidiny", "📅 Daty", "📞 Mifandraisa", "👋 Veloma"],
+      circuits: "Manana fitsangatsanganana maro izahay:\n• Nosy Be - Nosy Iranja, Nosy Komba\n• Sainte-Marie - Baleine, Nosy Nato\n• RN7 - Ambalavao, Isalo, Ifaty\n• Tsingy de Bemaraha\n• Massif du Makay\n• Andasibe - Lémurien Indri\nInona no tianao?",
+      hotels: "Manana mpiara-miasa amin'ny hotely tsara izahay:\n• Nosy Be - Hotel 4 étoiles\n• Sainte-Marie - Bungalow plage\n• Isalo - Lodge Safari\n• Antananarivo - Hôtel centre-ville",
+      cars: "Manana fiara 4x4 sy fiara mpandeha izahay. Misy chauffeur ihany koa.",
+      prices: "Ny vidiny:\n• Nosy Be 450€\n• Sainte-Marie 380€\n• RN7 950€ (12 jours)\n• Tsingy 580€\n• Andasibe 240€",
+      dates: "Afaka mandeha ianao amin'ny daty tianao. Antony 7/7 izahay!",
+      contact: "Antony amin'ny:\n📞 +261 38 17 343 08\n💬 WhatsApp: +261 38 17 343 08\n📧 zebugasytour1@gmail.com",
+      goodbye: "Misaotra anao! Mandra-pihaona! 🌴",
+      default: "Miala tsiny, tsy azoko izany. Azonao atao ny misafidy ireto:"
+    },
+    fr: {
+      welcome: "Bonjour! 🖐️ Je suis l'assistant de ZEBU GASY TOUR. Comment puis-je vous aider?",
+      help: "Je peux vous aider avec:",
+      options: ["💼 Circuits", "🏨 Hôtels", "🚗 Véhicules", "💰 Tarifs", "📅 Dates", "📞 Contact", "👋 Au revoir"],
+      circuits: "Nous proposons plusieurs circuits:\n• Nosy Be - Nosy Iranja, Nosy Komba\n• Sainte-Marie - Baleines, Nosy Nato\n• RN7 - Ambalavao, Isalo, Ifaty\n• Tsingy de Bemaraha\n• Massif du Makay\n• Andasibe - Lémurien Indri\nLequel vous intéresse?",
+      hotels: "Nos partenaires hôteliers:\n• Nosy Be - Hôtel 4 étoiles\n• Sainte-Marie - Bungalow plage\n• Isalo - Lodge Safari\n• Antananarivo - Hôtel centre-ville",
+      cars: "Nous disposons de véhicules 4x4 et de minibus avec chauffeur.",
+      prices: "Nos tarifs:\n• Nosy Be 450€\n• Sainte-Marie 380€\n• RN7 950€ (12 jours)\n• Tsingy 580€\n• Andasibe 240€",
+      dates: "Vous pouvez partir à la date de votre choix. Disponible 7j/7!",
+      contact: "Contactez-nous:\n📞 +261 38 17 343 08\n💬 WhatsApp: +261 38 17 343 08\n📧 zebugasytour1@gmail.com",
+      goodbye: "Merci! À très bientôt sur Madagascar! 🌴",
+      default: "Désolé, je n'ai pas compris. Vous pouvez choisir parmi:"
+    },
+    en: {
+      welcome: "Hello! 🖐️ I'm ZEBU GASY TOUR assistant. How can I help you?",
+      help: "I can help you with:",
+      options: ["💼 Tours", "🏨 Hotels", "🚗 Cars", "💰 Prices", "📅 Dates", "📞 Contact", "👋 Goodbye"],
+      circuits: "We offer many tours:\n• Nosy Be - Nosy Iranja, Nosy Komba\n• Sainte-Marie - Whales, Nosy Nato\n• RN7 - Ambalavao, Isalo, Ifaty\n• Tsingy de Bemaraha\n• Massif du Makay\n• Andasibe - Indri Lemur\nWhich one interests you?",
+      hotels: "Our hotel partners:\n• Nosy Be - 4-star Hotel\n• Sainte-Marie - Beach Bungalow\n• Isalo - Safari Lodge\n• Antananarivo - City Hotel",
+      cars: "We have 4x4 vehicles and minibuses with drivers.",
+      prices: "Our prices:\n• Nosy Be 450€\n• Sainte-Marie 380€\n• RN7 950€ (12 days)\n• Tsingy 580€\n• Andasibe 240€",
+      dates: "You can travel on your preferred dates. Available 7/7!",
+      contact: "Contact us:\n📞 +261 38 17 343 08\n💬 WhatsApp: +261 38 17 343 08\n📧 zebugasytour1@gmail.com",
+      goodbye: "Thank you! See you soon in Madagascar! 🌴",
+      default: "Sorry, I didn't understand. You can choose from:"
+    }
+  };
+
+  function detectLanguage(text) {
+    const mgWords = ['salama', 'manao', 'ahoana', 'fitsangatsanganana', 'hotely', 'vidiny', 'daty', 'veloma', 'inona', 'tianao', 'misaotra', 'antony', 'fiara'];
+    const frWords = ['bonjour', 'circuit', 'hôtel', 'tarif', 'prix', 'date', 'au revoir', 'merci', 'combien', 'quoi', 'comment', 'contact'];
+    const enWords = ['hello', 'tour', 'hotel', 'price', 'date', 'goodbye', 'thank', 'how', 'what', 'help', 'travel', 'contact'];
+    const textLower = text.toLowerCase();
+    let mgCount = 0, frCount = 0, enCount = 0;
+    mgWords.forEach(w => { if (textLower.includes(w)) mgCount++; });
+    frWords.forEach(w => { if (textLower.includes(w)) frCount++; });
+    enWords.forEach(w => { if (textLower.includes(w)) enCount++; });
+    if (mgCount >= frCount && mgCount >= enCount) return 'mg';
+    if (frCount >= enCount) return 'fr';
+    return 'en';
+  }
+
+  function getBotResponse(userMessage, lang) {
+    const msg = userMessage.toLowerCase();
+    const responses = knowledgeBase[lang] || knowledgeBase.fr;
+    const categories = {
+      circuits: ['circuit', 'voyage', 'tour', 'visite', 'excursion', 'rn7', 'nosy be', 'sainte marie', 'tsingy', 'makay', 'andasibe', 'fitsangatsanganana'],
+      hotels: ['hôtel', 'hotel', 'hébergement', 'logement', 'chambre', 'hotely'],
+      cars: ['voiture', 'véhicule', '4x4', 'transport', 'transfert', 'fiara'],
+      prices: ['prix', 'tarif', 'coût', 'combien', '€', 'euro', 'budget', 'vidiny'],
+      dates: ['date', 'quand', 'disponible', 'calendrier', 'daty'],
+      contact: ['contact', 'téléphone', 'whatsapp', 'email', 'appeler', 'antony']
+    };
+    for (const [category, words] of Object.entries(categories)) {
+      for (const word of words) {
+        if (msg.includes(word)) {
+          return responses[category] || responses.default;
+        }
+      }
+    }
+    if (msg.match(/bonjour|salut|hello|salama|hey|hi|alo|manao ahoana/)) {
+      return responses.welcome + '\n\n' + responses.options.join(' | ');
+    }
+    if (msg.match(/merci|thank|misaotra|thanks|gracias|misaotra betsaka/)) {
+      return "Avec plaisir! 😊 " + (lang === 'mg' ? 'Raha mila fanampiana indray, mba resaka anay!' : lang === 'fr' ? 'N\'hésitez pas si vous avez d\'autres questions!' : 'Don\'t hesitate if you have more questions!');
+    }
+    if (msg.match(/au revoir|goodbye|veloma|bye|ciao|salama|mandrapihaona/)) {
+      return responses.goodbye;
+    }
+    if (msg.match(/aide|help|fanampiana|torohevitra/)) {
+      return responses.help + '\n\n' + responses.options.join(' | ');
+    }
+    return responses.default + '\n\n' + responses.options.join(' | ');
+  }
+
+  function addMessage(text, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}`;
+    messageDiv.textContent = text;
+    chatbotMessages.appendChild(messageDiv);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+
+  function addQuickReplies(lang) {
+    const responses = knowledgeBase[lang] || knowledgeBase.fr;
+    const options = responses.options || knowledgeBase.fr.options;
+    const container = document.createElement('div');
+    container.className = 'quick-replies';
+    options.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className = 'quick-reply';
+      btn.textContent = opt;
+      btn.addEventListener('click', () => {
+        const text = opt.replace(/[💼🏨🚗💰📅👋📞]/g, '').trim();
+        handleUserMessage(text);
+      });
+      container.appendChild(btn);
+    });
+    chatbotMessages.appendChild(container);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+
+  function handleUserMessage(message) {
+    if (!message || message.trim() === '') return;
+    const userText = message.trim();
+    addMessage(userText, 'user');
+    const lang = detectLanguage(userText);
+    typingIndicator.classList.add('active');
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    setTimeout(() => {
+      typingIndicator.classList.remove('active');
+      let response = getBotResponse(userText, lang);
+      if (response.includes('|')) {
+        const parts = response.split('\n\n');
+        const mainMsg = parts[0] || response;
+        addMessage(mainMsg, 'bot');
+        setTimeout(() => addQuickReplies(lang), 400);
+      } else {
+        addMessage(response, 'bot');
+        const ctxKeywords = ['circuits', 'tours', 'hotels', 'prix', 'dates'];
+        if (ctxKeywords.some(k => response.toLowerCase().includes(k))) {
+          setTimeout(() => addQuickReplies(lang), 500);
+        }
+      }
+    }, 500 + Math.random() * 400);
+  }
+
+  function sendMessage() {
+    const text = chatbotInput.value;
+    if (text.trim() === '') return;
+    handleUserMessage(text);
+    chatbotInput.value = '';
+  }
+
+  // Événements du chatbot
+  if (chatbotToggle && chatbotWindow) {
+    chatbotToggle.addEventListener('click', () => {
+      const isOpen = chatbotWindow.classList.contains('open');
+      if (!isOpen) {
+        chatbotWindow.classList.add('open');
+        chatbotInput.focus();
+        if (chatbotMessages.children.length === 0) {
+          const lang = document.documentElement.getAttribute('lang') === 'en' ? 'en' : 
+                       document.documentElement.getAttribute('lang') === 'mg' ? 'mg' : 'fr';
+          const responses = knowledgeBase[lang] || knowledgeBase.fr;
+          addMessage(responses.welcome, 'bot');
+          setTimeout(() => {
+            addMessage('💡 ' + responses.help, 'bot');
+            setTimeout(() => addQuickReplies(lang), 300);
+          }, 400);
+        }
+      } else {
+        chatbotWindow.classList.remove('open');
+      }
+    });
+
+    chatbotClose.addEventListener('click', () => {
+      chatbotWindow.classList.remove('open');
+    });
+
+    chatbotSend.addEventListener('click', sendMessage);
+    chatbotInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+  }
 
   // =============================================
   // LANGUE
@@ -749,6 +1159,11 @@
       themeIcon.className = 'fas fa-sun';
     }
   });
+
+  // =============================================
+  // INITIALISATION
+  // =============================================
+  loadNews();
 </script>
 </body>
 </html>

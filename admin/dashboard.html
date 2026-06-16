@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin - ZEBU GASY TOUR</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <img src="../Image/logo_zebugasytour-removebg-preview.png" alt="Logo" class="sidebar-logo">
+      <span>ZGT Admin</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="active" data-page="dashboard"><i class="fas fa-th-large"></i> Tableau de bord</a>
+      <a href="#" data-page="news"><i class="fas fa-newspaper"></i> Actualités & Promos</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header class="admin-header">
+      <div class="d-flex align-items-center justify-content-between w-100">
+        <div>
+          <button class="toggle-sidebar" id="toggleSidebar"><i class="fas fa-bars"></i></button>
+          <span class="header-title" id="pageTitle">Tableau de bord</span>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <span class="badge bg-gold text-dark">Admin</span>
+          <span class="text-muted small" id="currentDate"></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <!-- Dashboard -->
+      <div id="page-dashboard" class="page-section active">
+        <div class="row g-4">
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(45,106,79,0.1); color: #2D6A4F;"><i class="fas fa-newspaper"></i></div>
+              <div><h3 id="totalNews">0</h3><p class="text-muted">Actualités</p></div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(198,164,59,0.1); color: #C6A43B;"><i class="fas fa-tags"></i></div>
+              <div><h3 id="totalPromos">0</h3><p class="text-muted">Promotions</p></div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(0,119,182,0.1); color: #0077B6;"><i class="fas fa-calendar"></i></div>
+              <div><h3 id="totalEvents">0</h3><p class="text-muted">Événements</p></div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(212,175,55,0.1); color: #D4AF37;"><i class="fas fa-eye"></i></div>
+              <div><h3 id="totalActive">0</h3><p class="text-muted">Actifs</p></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row mt-4">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header"><h5>Dernières actualités</h5></div>
+              <div class="card-body" id="latestNewsPreview">
+                <p class="text-muted">Aucune actualité pour le moment.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- News Management -->
+      <div id="page-news" class="page-section">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h4>Gestion des actualités & promotions</h4>
+          <button class="btn btn-gold btn-sm" id="addNewsBtn"><i class="fas fa-plus me-1"></i> Ajouter</button>
+        </div>
+        
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Titre</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="newsTableBody">
+                  <tr><td colspan="7" class="text-center text-muted">Chargement...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL avec upload d'image -->
+  <div class="modal fade" id="newsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="newsModalTitle">Ajouter une actualité</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="newsForm">
+            <input type="hidden" id="editId" value="">
+            
+            <div class="mb-3">
+              <label class="form-label">Titre</label>
+              <input type="text" id="newsTitle" class="form-control" required>
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label">Contenu</label>
+              <textarea id="newsContent" class="form-control" rows="3" required></textarea>
+            </div>
+            
+            <!-- Upload d'image -->
+            <div class="mb-3">
+              <label class="form-label">Image (optionnel)</label>
+              <input type="file" id="newsImage" class="form-control" accept="image/*">
+              <small class="text-muted">Formats acceptés : JPG, PNG, GIF. Taille max : 2MB</small>
+              <div id="imagePreview" class="mt-2" style="display: none;">
+                <img id="imagePreviewImg" src="" alt="Aperçu" style="max-height: 150px; border-radius: 8px; border: 1px solid #ddd; padding: 4px;">
+                <button type="button" class="btn btn-sm btn-danger ms-2" onclick="removeImage()"><i class="fas fa-times"></i> Supprimer</button>
+              </div>
+              <input type="hidden" id="newsImageData" value="">
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Type</label>
+                <select id="newsType" class="form-select">
+                  <option value="actualite">Actualité</option>
+                  <option value="promotion">Promotion</option>
+                  <option value="evenement">Événement</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Date</label>
+                <input type="date" id="newsDate" class="form-control">
+              </div>
+            </div>
+            
+            <div class="mb-3 form-check">
+              <input type="checkbox" id="newsActive" class="form-check-input" checked>
+              <label class="form-check-label">Actif</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-gold" id="saveNewsBtn">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

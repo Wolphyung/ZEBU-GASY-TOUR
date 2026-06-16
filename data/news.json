@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "Nouveau circuit : Découverte du Sud Sauvage",
+    "content": "Partez pour une aventure de 7 jours à travers le Grand Sud de Madagascar. Découvrez le parc de l'Isalo, les Tsingy et les plages d'Ifaty.",
+    "date": "2026-06-16",
+    "type": "promotion",
+    "image": "sud-sauvage.jpg",
+    "active": true
+  },
+  {
+    "id": 2,
+    "title": "Promotion : -15% sur Nosy Be",
+    "content": "Réservez votre séjour à Nosy Be avant le 30 juillet et bénéficiez de 15% de réduction sur notre circuit premium.",
+    "date": "2026-06-15",
+    "type": "promotion",
+    "image": "",
+    "active": true
+  },
+  {
+    "id": 3,
+    "title": "Nouveau menu au Zébu Resto",
+    "content": "Découvrez notre nouvelle carte automnale avec des plats signatures et des produits locaux de saison.",
+    "date": "2026-06-14",
+    "type": "actualite",
+    "image": "",
+    "active": true
+  }
+]

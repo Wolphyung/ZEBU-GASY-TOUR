@@ -11,33 +11,106 @@ if (!localStorage.getItem('admin_logged_in')) {
 let newsData = [];
 let editingId = null;
 let tempImageData = null;
+const API_URL = '../data/news.json';
 
 // ============================================
-// CHARGEMENT DES DONNÉES
+// CHARGEMENT DES DONNÉES DEPUIS LE FICHIER JSON
 // ============================================
-function loadData() {
-  const stored = localStorage.getItem('zgt_news');
-  if (stored) {
-    newsData = JSON.parse(stored);
-  } else {
-    newsData = [
-      { id: 1, title: 'Nouveau circuit : Découverte du Sud Sauvage', content: 'Partez pour une aventure de 7 jours à travers le Grand Sud de Madagascar.', date: '2026-06-16', type: 'promotion', image: '', active: true },
-      { id: 2, title: 'Promotion : -15% sur Nosy Be', content: 'Réservez votre séjour à Nosy Be avant le 30 juillet et bénéficiez de 15% de réduction.', date: '2026-06-15', type: 'promotion', image: '', active: true },
-      { id: 3, title: 'Nouveau menu au Zébu Resto', content: 'Découvrez notre nouvelle carte automnale avec des plats signatures.', date: '2026-06-14', type: 'actualite', image: '', active: true }
-    ];
-    saveData();
+async function loadData() {
+  try {
+    const response = await fetch(API_URL + '?t=' + new Date().getTime());
+    if (response.ok) {
+      newsData = await response.json();
+      // Sauvegarder une copie dans localStorage pour le fallback
+      localStorage.setItem('zgt_news', JSON.stringify(newsData));
+    } else {
+      // Fallback sur localStorage
+      const stored = localStorage.getItem('zgt_news');
+      if (stored) {
+        newsData = JSON.parse(stored);
+      } else {
+        newsData = getDefaultData();
+        saveToFile();
+      }
+    }
+  } catch (error) {
+    console.error('Erreur de chargement:', error);
+    // Fallback sur localStorage
+    const stored = localStorage.getItem('zgt_news');
+    if (stored) {
+      newsData = JSON.parse(stored);
+    } else {
+      newsData = getDefaultData();
+      saveToFile();
+    }
   }
   renderDashboard();
   renderNewsTable();
 }
 
 // ============================================
-// SAUVEGARDE DES DONNÉES
+// DONNÉES PAR DÉFAUT
 // ============================================
-function saveData() {
+function getDefaultData() {
+  return [
+    { id: 1, title: 'Nouveau circuit : Découverte du Sud Sauvage', content: 'Partez pour une aventure de 7 jours à travers le Grand Sud de Madagascar.', date: '2026-06-16', type: 'promotion', image: '', active: true },
+    { id: 2, title: 'Promotion : -15% sur Nosy Be', content: 'Réservez votre séjour à Nosy Be avant le 30 juillet et bénéficiez de 15% de réduction.', date: '2026-06-15', type: 'promotion', image: '', active: true },
+    { id: 3, title: 'Nouveau menu au Zébu Resto', content: 'Découvrez notre nouvelle carte automnale avec des plats signatures.', date: '2026-06-14', type: 'actualite', image: '', active: true }
+  ];
+}
+
+// ============================================
+// SAUVEGARDER DANS LE FICHIER JSON (via GitHub API)
+// ============================================
+async function saveToFile() {
+  // Sauvegarder dans localStorage pour le fallback
   localStorage.setItem('zgt_news', JSON.stringify(newsData));
-  renderDashboard();
-  renderNewsTable();
+  
+  // Essayez d'utiliser l'API GitHub pour sauvegarder le fichier
+  // Note: Cela nécessite un token GitHub personnel
+  try {
+    const token = localStorage.getItem('github_token');
+    const repo = 'VOTRE_COMPTE/VOTRE_REPO'; // À remplacer
+    const path = 'data/news.json';
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(newsData, null, 2))));
+    
+    // Récupérer le SHA actuel du fichier
+    const getFileResponse = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+      headers: {
+        'Authorization': `token ${token}`,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+    
+    let sha = '';
+    if (getFileResponse.ok) {
+      const fileData = await getFileResponse.json();
+      sha = fileData.sha;
+    }
+    
+    // Mettre à jour le fichier
+    const updateResponse = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${token}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github.v3+json'
+      },
+      body: JSON.stringify({
+        message: 'Mise à jour des actualités',
+        content: content,
+        sha: sha
+      })
+    });
+    
+    if (updateResponse.ok) {
+      console.log('Fichier mis à jour sur GitHub');
+      showToast('✅ Données sauvegardées sur GitHub !');
+    }
+  } catch (error) {
+    console.error('Erreur de sauvegarde GitHub:', error);
+    showToast('⚠️ Données sauvegardées localement. Push manuel requis sur GitHub.');
+  }
 }
 
 // ============================================
@@ -149,14 +222,12 @@ document.getElementById('newsImage').addEventListener('change', function(e) {
   const file = this.files[0];
   if (!file) return;
   
-  // Vérifier la taille (max 2MB)
   if (file.size > 2 * 1024 * 1024) {
     alert('L\'image est trop volumineuse. Taille max : 2MB');
     this.value = '';
     return;
   }
   
-  // Vérifier le type
   if (!file.type.startsWith('image/')) {
     alert('Veuillez sélectionner une image valide (JPG, PNG, GIF)');
     this.value = '';
@@ -252,9 +323,10 @@ document.getElementById('saveNewsBtn').addEventListener('click', function() {
     newsData.push({ id: newId, title, content, date, type, image, active });
   }
   
-  saveData();
+  saveToFile();
+  renderDashboard();
+  renderNewsTable();
   newsModal.hide();
-  alert('✅ Enregistré avec succès !');
 });
 
 // ============================================
@@ -263,7 +335,9 @@ document.getElementById('saveNewsBtn').addEventListener('click', function() {
 function deleteNews(id) {
   if (!confirm('Voulez-vous vraiment supprimer cette actualité ?')) return;
   newsData = newsData.filter(n => n.id !== id);
-  saveData();
+  saveToFile();
+  renderDashboard();
+  renderNewsTable();
 }
 
 // ============================================
@@ -273,7 +347,9 @@ function toggleNews(id) {
   const item = newsData.find(n => n.id === id);
   if (item) {
     item.active = !item.active;
-    saveData();
+    saveToFile();
+    renderDashboard();
+    renderNewsTable();
   }
 }
 
@@ -281,3 +357,15 @@ function toggleNews(id) {
 // INITIALISATION
 // ============================================
 loadData();
+
+// ============================================
+// TOAST POUR LES NOTIFICATIONS
+// ============================================
+function showToast(message) {
+  const toast = document.getElementById('toastMsg');
+  if (toast) {
+    toast.textContent = message;
+    toast.className = 'toast-notification show';
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+}

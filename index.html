@@ -872,27 +872,39 @@
   });
 
   // =============================================
-  // CHARGER LES ACTUALITÉS
+  // CHARGER LES ACTUALITÉS DEPUIS LE FICHIER JSON
   // =============================================
   function loadNews() {
     const container = document.getElementById('newsContainer');
-    let newsData = JSON.parse(localStorage.getItem('zgt_news')) || [];
     
-    // Log pour déboguer
-    console.log('Données chargées:', newsData);
-    
-    if (newsData.length === 0) {
-      newsData = [
-        { id: 1, title: 'Nouveau circuit : Découverte du Sud Sauvage', content: 'Partez pour une aventure de 7 jours à travers le Grand Sud de Madagascar.', date: '2026-06-16', type: 'promotion', image: '', active: true },
-        { id: 2, title: 'Promotion : -15% sur Nosy Be', content: 'Réservez votre séjour à Nosy Be avant le 30 juillet et bénéficiez de 15% de réduction.', date: '2026-06-15', type: 'promotion', image: '', active: true },
-        { id: 3, title: 'Nouveau menu au Zébu Resto', content: 'Découvrez notre nouvelle carte automnale avec des plats signatures.', date: '2026-06-14', type: 'actualite', image: '', active: true }
-      ];
-      localStorage.setItem('zgt_news', JSON.stringify(newsData));
-    }
-    
-    // Filtrer les actualités actives
+    // Charger depuis le fichier JSON
+    fetch('./data/news.json?t=' + new Date().getTime())
+      .then(response => {
+        if (!response.ok) throw new Error('Fichier non trouvé');
+        return response.json();
+      })
+      .then(data => {
+        // Mettre à jour le localStorage pour le fallback
+        localStorage.setItem('zgt_news', JSON.stringify(data));
+        displayNews(data, container);
+      })
+      .catch(() => {
+        // Fallback sur localStorage si le fichier n'est pas accessible
+        let newsData = JSON.parse(localStorage.getItem('zgt_news')) || [];
+        if (newsData.length === 0) {
+          newsData = [
+            { id: 1, title: 'Nouveau circuit : Découverte du Sud Sauvage', content: 'Partez pour une aventure de 7 jours à travers le Grand Sud de Madagascar.', date: '2026-06-16', type: 'promotion', image: '', active: true },
+            { id: 2, title: 'Promotion : -15% sur Nosy Be', content: 'Réservez votre séjour à Nosy Be avant le 30 juillet et bénéficiez de 15% de réduction.', date: '2026-06-15', type: 'promotion', image: '', active: true },
+            { id: 3, title: 'Nouveau menu au Zébu Resto', content: 'Découvrez notre nouvelle carte automnale avec des plats signatures.', date: '2026-06-14', type: 'actualite', image: '', active: true }
+          ];
+          localStorage.setItem('zgt_news', JSON.stringify(newsData));
+        }
+        displayNews(newsData, container);
+      });
+  }
+
+  function displayNews(newsData, container) {
     const activeNews = newsData.filter(n => n.active === true);
-    console.log('Actualités actives:', activeNews);
     
     if (activeNews.length === 0) {
       container.innerHTML = `<div class="col-12 text-center text-muted"><p>Aucune actualité disponible pour le moment.</p></div>`;
@@ -903,9 +915,8 @@
     container.innerHTML = displayNews.map(n => {
       const typeIcon = n.type === 'promotion' ? 'fa-tags' : n.type === 'evenement' ? 'fa-calendar' : 'fa-newspaper';
       
-      // Gestion de l'image
       let imageHtml = '';
-      if (n.image && n.image !== '' && n.image !== 'null' && n.image !== 'undefined' && n.image !== 'sud-sauvage.jpg') {
+      if (n.image && n.image !== '' && n.image !== 'null' && n.image !== 'undefined') {
         if (n.image.startsWith('data:image') || n.image.startsWith('http')) {
           imageHtml = `<img src="${n.image}" class="news-card-image" alt="${n.title}">`;
         } else {
@@ -934,7 +945,6 @@
       `;
     }).join('');
     
-    // Rafraîchir AOS
     if (typeof AOS !== 'undefined') {
       AOS.refresh();
     }

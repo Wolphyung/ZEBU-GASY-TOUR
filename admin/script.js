@@ -11,106 +11,120 @@ if (!localStorage.getItem('admin_logged_in')) {
 let newsData = [];
 let editingId = null;
 let tempImageData = null;
-const API_URL = '../data/news.json';
 
 // ============================================
-// CHARGEMENT DES DONNÉES DEPUIS LE FICHIER JSON
+// CONFIGURATION GITHUB - À MODIFIER
 // ============================================
-async function loadData() {
+const GITHUB_CONFIG = {
+  owner: 'Wolphyung',     // Votre nom GitHub
+  repo: 'ZEBU-GASY-TOUR',                 // Nom du repository
+  path: 'data/news.json',
+  branch: 'main',
+  // Créez un token ici: https://github.com/settings/tokens
+  // Cochez 'repo' pour autoriser l'écriture
+//   token: 'GITHUB_TOKEN'
+};
+
+// ============================================
+// CHARGEMENT DE LA CONFIGURATION GITHUB
+// ============================================
+let GITHUB_CONFIG = null;
+
+async function loadGitHubConfig() {
   try {
-    const response = await fetch(API_URL + '?t=' + new Date().getTime());
+    // Essayer de charger config.js
+    const response = await fetch('config.js?t=' + Date.now());
     if (response.ok) {
-      newsData = await response.json();
-      // Sauvegarder une copie dans localStorage pour le fallback
-      localStorage.setItem('zgt_news', JSON.stringify(newsData));
-    } else {
-      // Fallback sur localStorage
-      const stored = localStorage.getItem('zgt_news');
-      if (stored) {
-        newsData = JSON.parse(stored);
-      } else {
-        newsData = getDefaultData();
-        saveToFile();
-      }
+      const script = document.createElement('script');
+      script.src = 'config.js?t=' + Date.now();
+      document.head.appendChild(script);
+      
+      return new Promise((resolve) => {
+        script.onload = () => {
+          // La variable GITHUB_CONFIG est maintenant disponible
+          resolve();
+        };
+        script.onerror = () => {
+          console.warn('config.js non trouvé, utilisation des valeurs par défaut');
+          resolve();
+        };
+      });
     }
   } catch (error) {
-    console.error('Erreur de chargement:', error);
-    // Fallback sur localStorage
-    const stored = localStorage.getItem('zgt_news');
-    if (stored) {
-      newsData = JSON.parse(stored);
-    } else {
-      newsData = getDefaultData();
-      saveToFile();
-    }
+    console.warn('Erreur chargement config:', error);
   }
-  renderDashboard();
-  renderNewsTable();
 }
 
 // ============================================
 // DONNÉES PAR DÉFAUT
 // ============================================
-function getDefaultData() {
-  return [
+function useDefaultData() {
+  newsData = [
     { id: 1, title: 'Nouveau circuit : Découverte du Sud Sauvage', content: 'Partez pour une aventure de 7 jours à travers le Grand Sud de Madagascar.', date: '2026-06-16', type: 'promotion', image: '', active: true },
     { id: 2, title: 'Promotion : -15% sur Nosy Be', content: 'Réservez votre séjour à Nosy Be avant le 30 juillet et bénéficiez de 15% de réduction.', date: '2026-06-15', type: 'promotion', image: '', active: true },
     { id: 3, title: 'Nouveau menu au Zébu Resto', content: 'Découvrez notre nouvelle carte automnale avec des plats signatures.', date: '2026-06-14', type: 'actualite', image: '', active: true }
   ];
+  saveToGitHub();
 }
 
 // ============================================
-// SAUVEGARDER DANS LE FICHIER JSON (via GitHub API)
+// SAUVEGARDER SUR GITHUB
 // ============================================
-async function saveToFile() {
+async function saveToGitHub() {
   // Sauvegarder dans localStorage pour le fallback
   localStorage.setItem('zgt_news', JSON.stringify(newsData));
   
-  // Essayez d'utiliser l'API GitHub pour sauvegarder le fichier
-  // Note: Cela nécessite un token GitHub personnel
   try {
-    const token = localStorage.getItem('github_token');
-    const repo = 'VOTRE_COMPTE/VOTRE_REPO'; // À remplacer
-    const path = 'data/news.json';
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(newsData, null, 2))));
-    
     // Récupérer le SHA actuel du fichier
-    const getFileResponse = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+    const getUrl = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.path}`;
+    const getResponse = await fetch(getUrl, {
       headers: {
-        'Authorization': `token ${token}`,
+        'Authorization': `token ${GITHUB_CONFIG.token}`,
         'Accept': 'application/vnd.github.v3+json'
       }
     });
     
     let sha = '';
-    if (getFileResponse.ok) {
-      const fileData = await getFileResponse.json();
+    if (getResponse.ok) {
+      const fileData = await getResponse.json();
       sha = fileData.sha;
     }
     
+    // Préparer le contenu en Base64
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(newsData, null, 2))));
+    
     // Mettre à jour le fichier
-    const updateResponse = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+    const updateUrl = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.path}`;
+    const updateResponse = await fetch(updateUrl, {
       method: 'PUT',
       headers: {
-        'Authorization': `token ${token}`,
+        'Authorization': `token ${GITHUB_CONFIG.token}`,
         'Content-Type': 'application/json',
         'Accept': 'application/vnd.github.v3+json'
       },
       body: JSON.stringify({
-        message: 'Mise à jour des actualités',
+        message: `Mise à jour des actualités - ${new Date().toLocaleString()}`,
         content: content,
-        sha: sha
+        sha: sha,
+        branch: GITHUB_CONFIG.branch
       })
     });
     
     if (updateResponse.ok) {
-      console.log('Fichier mis à jour sur GitHub');
+      console.log('✅ Fichier mis à jour sur GitHub');
       showToast('✅ Données sauvegardées sur GitHub !');
+    } else {
+      const errorData = await updateResponse.json();
+      console.error('Erreur GitHub:', errorData);
+      showToast('⚠️ Erreur de sauvegarde. Vérifiez votre token.', 'error');
     }
   } catch (error) {
-    console.error('Erreur de sauvegarde GitHub:', error);
-    showToast('⚠️ Données sauvegardées localement. Push manuel requis sur GitHub.');
+    console.error('Erreur de sauvegarde:', error);
+    showToast('⚠️ Données sauvegardées localement. Synchronisez manuellement.', 'error');
   }
+  
+  renderDashboard();
+  renderNewsTable();
 }
 
 // ============================================
@@ -323,9 +337,7 @@ document.getElementById('saveNewsBtn').addEventListener('click', function() {
     newsData.push({ id: newId, title, content, date, type, image, active });
   }
   
-  saveToFile();
-  renderDashboard();
-  renderNewsTable();
+  saveToGitHub();
   newsModal.hide();
 });
 
@@ -335,9 +347,7 @@ document.getElementById('saveNewsBtn').addEventListener('click', function() {
 function deleteNews(id) {
   if (!confirm('Voulez-vous vraiment supprimer cette actualité ?')) return;
   newsData = newsData.filter(n => n.id !== id);
-  saveToFile();
-  renderDashboard();
-  renderNewsTable();
+  saveToGitHub();
 }
 
 // ============================================
@@ -347,9 +357,20 @@ function toggleNews(id) {
   const item = newsData.find(n => n.id === id);
   if (item) {
     item.active = !item.active;
-    saveToFile();
-    renderDashboard();
-    renderNewsTable();
+    saveToGitHub();
+  }
+}
+
+// ============================================
+// TOAST POUR LES NOTIFICATIONS
+// ============================================
+function showToast(message, type = 'success') {
+  const toast = document.getElementById('toastMsg');
+  if (toast) {
+    toast.textContent = message;
+    toast.className = 'toast-notification ' + type;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
   }
 }
 
@@ -357,15 +378,3 @@ function toggleNews(id) {
 // INITIALISATION
 // ============================================
 loadData();
-
-// ============================================
-// TOAST POUR LES NOTIFICATIONS
-// ============================================
-function showToast(message) {
-  const toast = document.getElementById('toastMsg');
-  if (toast) {
-    toast.textContent = message;
-    toast.className = 'toast-notification show';
-    setTimeout(() => toast.classList.remove('show'), 3000);
-  }
-}

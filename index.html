@@ -872,81 +872,88 @@
   });
 
   // =============================================
-  // CHARGER LES ACTUALITÉS DEPUIS LE FICHIER JSON
+  // CHARGER LES ACTUALITÉS DEPUIS GITHUB
   // =============================================
-  function loadNews() {
+  async function loadNews() {
     const container = document.getElementById('newsContainer');
     
-    // Charger depuis le fichier JSON
-    fetch('./data/news.json?t=' + new Date().getTime())
-      .then(response => {
-        if (!response.ok) throw new Error('Fichier non trouvé');
-        return response.json();
-      })
-      .then(data => {
-        // Mettre à jour le localStorage pour le fallback
-        localStorage.setItem('zgt_news', JSON.stringify(data));
-        displayNews(data, container);
-      })
-      .catch(() => {
-        // Fallback sur localStorage si le fichier n'est pas accessible
-        let newsData = JSON.parse(localStorage.getItem('zgt_news')) || [];
-        if (newsData.length === 0) {
-          newsData = [
-            { id: 1, title: 'Nouveau circuit : Découverte du Sud Sauvage', content: 'Partez pour une aventure de 7 jours à travers le Grand Sud de Madagascar.', date: '2026-06-16', type: 'promotion', image: '', active: true },
-            { id: 2, title: 'Promotion : -15% sur Nosy Be', content: 'Réservez votre séjour à Nosy Be avant le 30 juillet et bénéficiez de 15% de réduction.', date: '2026-06-15', type: 'promotion', image: '', active: true },
-            { id: 3, title: 'Nouveau menu au Zébu Resto', content: 'Découvrez notre nouvelle carte automnale avec des plats signatures.', date: '2026-06-14', type: 'actualite', image: '', active: true }
-          ];
-          localStorage.setItem('zgt_news', JSON.stringify(newsData));
-        }
-        displayNews(newsData, container);
-      });
-  }
-
-  function displayNews(newsData, container) {
-    const activeNews = newsData.filter(n => n.active === true);
-    
-    if (activeNews.length === 0) {
-      container.innerHTML = `<div class="col-12 text-center text-muted"><p>Aucune actualité disponible pour le moment.</p></div>`;
-      return;
-    }
-    
-    const displayNews = activeNews.slice(0, 3);
-    container.innerHTML = displayNews.map(n => {
-      const typeIcon = n.type === 'promotion' ? 'fa-tags' : n.type === 'evenement' ? 'fa-calendar' : 'fa-newspaper';
+    try {
+      // Charger depuis GitHub
+      const url = `https://raw.githubusercontent.com/VOTRE_NOM_UTILISATEUR/VOTRE_REPO/main/data/news.json`;
+      const response = await fetch(url);
       
-      let imageHtml = '';
-      if (n.image && n.image !== '' && n.image !== 'null' && n.image !== 'undefined') {
-        if (n.image.startsWith('data:image') || n.image.startsWith('http')) {
-          imageHtml = `<img src="${n.image}" class="news-card-image" alt="${n.title}">`;
-        } else {
-          imageHtml = `<img src="./Image/${n.image}" class="news-card-image" alt="${n.title}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'news-card-image d-flex align-items-center justify-content-center text-muted\\' style=\\'background: var(--sand, #f0ece6);\\'><i class=\\'fas fa-image fa-3x\\' style=\\'opacity:0.3;\\'></i></div>'">`;
-        }
+      let newsData = [];
+      if (response.ok) {
+        newsData = await response.json();
+        // Sauvegarder dans localStorage pour le fallback
+        localStorage.setItem('zgt_news', JSON.stringify(newsData));
       } else {
-        imageHtml = `<div class="news-card-image d-flex align-items-center justify-content-center text-muted" style="background: var(--sand, #f0ece6);">
-          <i class="fas fa-image fa-3x" style="opacity:0.3;"></i>
-        </div>`;
+        // Fallback: utiliser localStorage
+        newsData = JSON.parse(localStorage.getItem('zgt_news')) || [];
       }
       
-      return `
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="news-card">
-            ${imageHtml}
-            <div class="news-card-body">
-              <div class="news-card-header">
-                <span class="news-type ${n.type}"><i class="fas ${typeIcon} me-1"></i> ${n.type}</span>
-                <span class="news-date">${n.date}</span>
+      // Log pour déboguer
+      console.log('Données chargées depuis GitHub:', newsData);
+      
+      if (newsData.length === 0) {
+        // Données par défaut
+        newsData = [
+          { id: 1, title: 'Nouveau circuit : Découverte du Sud Sauvage', content: 'Partez pour une aventure de 7 jours à travers le Grand Sud de Madagascar.', date: '2026-06-16', type: 'promotion', image: '', active: true },
+          { id: 2, title: 'Promotion : -15% sur Nosy Be', content: 'Réservez votre séjour à Nosy Be avant le 30 juillet et bénéficiez de 15% de réduction.', date: '2026-06-15', type: 'promotion', image: '', active: true },
+          { id: 3, title: 'Nouveau menu au Zébu Resto', content: 'Découvrez notre nouvelle carte automnale avec des plats signatures.', date: '2026-06-14', type: 'actualite', image: '', active: true }
+        ];
+        localStorage.setItem('zgt_news', JSON.stringify(newsData));
+      }
+      
+      // Filtrer les actualités actives
+      const activeNews = newsData.filter(n => n.active === true);
+      console.log('Actualités actives:', activeNews);
+      
+      if (activeNews.length === 0) {
+        container.innerHTML = `<div class="col-12 text-center text-muted"><p>Aucune actualité disponible pour le moment.</p></div>`;
+        return;
+      }
+      
+      const displayNews = activeNews.slice(0, 3);
+      container.innerHTML = displayNews.map(n => {
+        const typeIcon = n.type === 'promotion' ? 'fa-tags' : n.type === 'evenement' ? 'fa-calendar' : 'fa-newspaper';
+        
+        let imageHtml = '';
+        if (n.image && n.image !== '' && n.image !== 'null' && n.image !== 'undefined') {
+          if (n.image.startsWith('data:image') || n.image.startsWith('http')) {
+            imageHtml = `<img src="${n.image}" class="news-card-image" alt="${n.title}">`;
+          } else {
+            imageHtml = `<img src="./Image/${n.image}" class="news-card-image" alt="${n.title}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'news-card-image d-flex align-items-center justify-content-center text-muted\\' style=\\'background: var(--sand, #f0ece6);\\'><i class=\\'fas fa-image fa-3x\\' style=\\'opacity:0.3;\\'></i></div>'">`;
+          }
+        } else {
+          imageHtml = `<div class="news-card-image d-flex align-items-center justify-content-center text-muted" style="background: var(--sand, #f0ece6);">
+            <i class="fas fa-image fa-3x" style="opacity:0.3;"></i>
+          </div>`;
+        }
+        
+        return `
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="news-card">
+              ${imageHtml}
+              <div class="news-card-body">
+                <div class="news-card-header">
+                  <span class="news-type ${n.type}"><i class="fas ${typeIcon} me-1"></i> ${n.type}</span>
+                  <span class="news-date">${n.date}</span>
+                </div>
+                <h5 class="fw-bold">${n.title}</h5>
+                <p class="text-muted-custom small">${n.content}</p>
               </div>
-              <h5 class="fw-bold">${n.title}</h5>
-              <p class="text-muted-custom small">${n.content}</p>
             </div>
           </div>
-        </div>
-      `;
-    }).join('');
-    
-    if (typeof AOS !== 'undefined') {
-      AOS.refresh();
+        `;
+      }).join('');
+      
+      if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+      }
+    } catch (error) {
+      console.error('Erreur chargement actualités:', error);
+      container.innerHTML = `<div class="col-12 text-center text-muted"><p>Impossible de charger les actualités.</p></div>`;
     }
   }
 
